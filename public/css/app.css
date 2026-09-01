@@ -1,0 +1,2507 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+nav {
+    position: fixed;
+    top: 18px;
+    left: 5%;
+    right: 5%;
+
+    height: 70px;
+
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(15, 23, 42, 0.10);
+
+    transition: 0.4s ease;
+}
+
+nav.scrolled {
+    top: 10px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.15);
+}
+
+
+/* =====================================================
+   LOGO + NAMA
+===================================================== */
+
+.logonama {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    width: 260px;
+    min-width: 260px;
+
+    height: 100%;
+
+    flex-shrink: 0;
+}
+
+.logonama .logo {
+    width: 43px;
+    height: 43px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+.logonama h2 {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #0f172a;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    width: 18ch;
+    min-width: 18ch;
+    max-width: 18ch;
+
+    overflow: hidden;
+
+    border-right: 2px solid #1677ff;
+
+    padding-right: 4px;
+
+    box-sizing: content-box;
+
+    animation:
+        denpasarTyping 8s steps(18, end) infinite,
+        denpasarCursor 0.7s step-end infinite;
+}
+
+
+/* =====================================================
+   TYPING
+===================================================== */
+
+@keyframes denpasarTyping {
+
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    30% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    55% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    85% {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 100% 0 0);
+    }
+}
+
+@keyframes denpasarCursor {
+
+    0%,
+    100% {
+        border-color: #1677ff;
+    }
+
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+/* =====================================================
+   MENU NAVBAR
+===================================================== */
+
+nav ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+nav ul li a {
+    position: relative;
+
+    display: block;
+
+    padding: 10px 15px;
+
+    color: #475569;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    border-radius: 10px;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #1677ff;
+
+    background: rgba(22, 119, 255, 0.07);
+
+    transform: translateY(-2px);
+}
+
+nav ul li a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 4px;
+
+    width: 0;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1677ff,
+            #ff7a00
+        );
+
+    transform: translateX(-50%);
+
+    transition: width 0.35s ease;
+}
+
+nav ul li a:hover::after {
+    width: 55%;
+}
+
+
+/* =====================================================
+   CTA NAVBAR
+===================================================== */
+
+nav .nav-cta {
+    text-decoration: none !important;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #006BFF;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+nav .nav-cta:hover {
+    text-decoration: none !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 107, 255, 0.3);
+}
+
+
+/* =====================================================
+   SECTION HOME
+===================================================== */
+
+.section-1 {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 800px;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    background: #06111f;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 800px;
+
+    margin: 0;
+    padding: 140px 8% 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 50px;
+
+    background-image:
+        url('/images/Group 25.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =====================================================
+   OVERLAY HERO
+===================================================== */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 15, 30, 0.94) 0%,
+            rgba(5, 15, 30, 0.80) 45%,
+            rgba(5, 15, 30, 0.45) 75%,
+            rgba(5, 15, 30, 0.65) 100%
+        );
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   JUDUL HERO
+===================================================== */
+
+.judul {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 650px;
+
+    color: white;
+
+    padding: 0;
+
+    margin: 0;
+}
+
+.judul-atas {
+    margin: 0 0 15px;
+
+    color: #1680ff;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 500;
+}
+
+.sub-judul {
+    margin: 0 0 20px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: clamp(40px, 4vw, 60px);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    color: white;
+}
+
+.warna1 {
+    color: #006BFF;
+}
+
+.judul-bawah {
+    margin: 0 0 35px;
+
+    color: #d5dce5;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   BUTTON HERO
+===================================================== */
+
+.jelajahi,
+.tentangkami {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: white;
+
+    background: #006BFF;
+
+    text-decoration: none !important;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* JARAK ANTAR TOMBOL */
+
+.jelajahi {
+    margin-right: 12px;
+}
+
+.tentangkami {
+    margin-right: 0;
+}
+
+.jelajahi:hover,
+.tentangkami:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 107, 255, 0.35);
+}
+
+.jelajahi span,
+.tentangkami span {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =====================================================
+   FOTO LOGO SDM
+===================================================== */
+
+.foto {
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.foto img {
+    width: min(520px, 40vw);
+    height: auto;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 20px 40px rgba(0, 0, 0, 0.25)
+        );
+
+    animation: logoFloating 5s ease-in-out infinite;
+}
+
+@keyframes logoFloating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+/* =====================================================
+   HERO PARTICLES
+===================================================== */
+
+.hero-particles {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+
+    display: block;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.8),
+        0 0 20px rgba(59,130,246,0.7);
+
+    opacity: 0.7;
+
+    animation:
+        floatingParticle 6s ease-in-out infinite;
+}
+
+.p1 {
+    top: 18%;
+    left: 12%;
+}
+
+.p2 {
+    top: 28%;
+    left: 42%;
+
+    width: 8px;
+    height: 8px;
+
+    background: #1680ff;
+
+    box-shadow:
+        0 0 10px #1680ff,
+        0 0 30px rgba(22,128,255,0.8);
+
+    animation-delay: 1s;
+}
+
+.p3 {
+    top: 68%;
+    left: 18%;
+
+    width: 4px;
+    height: 4px;
+
+    animation-delay: 2s;
+}
+
+.p4 {
+    top: 22%;
+    right: 24%;
+
+    width: 7px;
+    height: 7px;
+
+    background: #ff7a00;
+
+    box-shadow:
+        0 0 10px #ff7a00,
+        0 0 30px rgba(255,122,0,0.8);
+
+    animation-delay: 1.5s;
+}
+
+.p5 {
+    bottom: 20%;
+    right: 34%;
+
+    animation-delay: 3s;
+}
+
+.p6 {
+    top: 48%;
+    right: 12%;
+
+    width: 4px;
+    height: 4px;
+
+    background: #1680ff;
+
+    animation-delay: 2.5s;
+}
+
+.p7 {
+    bottom: 28%;
+    left: 45%;
+
+    width: 6px;
+    height: 6px;
+
+    background: #ff7a00;
+
+    animation-delay: 4s;
+}
+
+.p8 {
+    top: 15%;
+    right: 8%;
+
+    width: 3px;
+    height: 3px;
+
+    animation-delay: 4.5s;
+}
+
+@keyframes floatingParticle {
+
+    0% {
+        transform: translate3d(0,0,0) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate3d(-5px,-30px,0) scale(1.25);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(0,0,0) scale(1);
+        opacity: 0.3;
+    }
+}
+
+
+/* =====================================================
+   SPARKLES
+===================================================== */
+
+.hero-sparkles {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 4;
+
+    pointer-events: none;
+}
+
+.hero-sparkles span {
+    position: absolute;
+
+    color: white;
+
+    font-size: 18px;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 25px rgba(59,130,246,0.8);
+
+    animation:
+        sparkle 3s ease-in-out infinite;
+}
+
+.hero-sparkles span:nth-child(1) {
+    top: 20%;
+    right: 16%;
+}
+
+.hero-sparkles span:nth-child(2) {
+    top: 65%;
+    right: 28%;
+
+    font-size: 12px;
+
+    animation-delay: 1s;
+}
+
+.hero-sparkles span:nth-child(3) {
+    top: 35%;
+    left: 38%;
+
+    font-size: 10px;
+
+    animation-delay: 2s;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.7) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3) rotate(45deg);
+    }
+}
+
+
+/* =====================================================
+   STATISTIK HOME
+===================================================== */
+
+.hero-bawah {
+
+    position: relative;
+
+    z-index: 20;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    gap: 24px;
+
+    width: fit-content;
+
+    margin: -160px 0 0 8%;
+
+    padding: 0;
+
+}
+
+.bwh-1 {
+
+    width: 150px;
+    min-height: 105px;
+
+    padding: 18px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    border-radius: 18px;
+
+    transition: 0.3s ease;
+}
+
+.bwh-1:hover {
+    transform: translateY(-8px);
+
+    background:
+        rgba(255,255,255,0.16);
+}
+
+.bwh-1 h2 {
+    margin: 0 0 6px;
+
+    font-size: 30px;
+
+    color: #1680ff;
+
+    font-weight: 800;
+}
+
+.bwh-1 p {
+    margin: 0;
+
+    color: white;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   PROGRAM SECTION
+===================================================== */
+
+.document-section {
+
+    width: 100%;
+
+    padding: 100px 6% 90px;
+
+    background: #f8fafc;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   HEADER PROGRAM
+===================================================== */
+
+.section-header {
+
+    max-width: 650px;
+
+    margin: 0 0 50px;
+}
+
+.section-label {
+
+    display: inline-block;
+
+    color: #3b82f6;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.section-header h2 {
+
+    margin: 0 0 15px;
+
+    color: #0f172a;
+
+    font-size: 48px;
+
+    font-weight: 700;
+}
+
+.section-header p {
+
+    margin: 0;
+
+    color: #64748b;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   SLIDER WRAPPER
+===================================================== */
+
+.slider-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    cursor: grab;
+
+    user-select: none;
+
+    touch-action: pan-y;
+
+    padding: 15px 0 25px;
+}
+
+.slider-wrapper:active {
+    cursor: grabbing;
+}
+
+
+/* =====================================================
+   CARD SLIDER
+===================================================== */
+
+.card-slider {
+
+    display: flex;
+
+    gap: 24px;
+
+    width: max-content;
+
+    padding: 0 10px;
+
+    transform: translate3d(0,0,0);
+
+    will-change: transform;
+}
+
+
+/* =====================================================
+   SEMUA CARD
+===================================================== */
+
+[class^="info-card-"] {
+
+    position: relative;
+
+    flex: 0 0 280px;
+
+    width: 280px;
+
+    height: 320px;
+
+    padding: 30px;
+
+    display: block;
+
+    box-sizing: border-box;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    color: white;
+
+    text-decoration: none;
+
+    background-size: cover;
+
+    background-position: center;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+        0 10px 30px rgba(15,23,42,0.12);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/* =====================================================
+   BACKGROUND CARD
+===================================================== */
+
+.info-card-1 {
+    background-image: url('/images/hero 2.png');
+}
+
+.info-card-2 {
+    background-image: url('/images/hero 3.png');
+}
+
+.info-card-3 {
+    background-image: url('/images/hero 4.png');
+    background-position: center;
+}
+
+.info-card-4 {
+    background-image: url('/images/hero 5.png');
+}
+
+.info-card-5 {
+    background-image: url('/images/hero 6.png');
+}
+
+.info-card-6 {
+    background-image: url('/images/hero 7.png');
+}
+
+.info-card-7 {
+    background-image: url('/images/hero 8.png');
+}
+
+.info-card-8 {
+    background-image: url('/images/hero 9.png');
+}
+
+
+/* =====================================================
+   DARK OVERLAY CARD
+===================================================== */
+
+[class^="info-card-"]::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5,15,30,0.15),
+            rgba(5,15,30,0.88)
+        );
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   CARD HOVER
+===================================================== */
+
+[class^="info-card-"]:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 25px 50px rgba(15,23,42,0.22);
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.card-icon,
+.card-number,
+[class^="info-card-"] h3,
+[class^="info-card-"] p,
+.card-arrow {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.card-icon {
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 35px;
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(8px);
+
+    font-size: 25px;
+
+    transition: 0.3s ease;
+}
+
+[class^="info-card-"]:hover .card-icon {
+    transform:
+        rotate(-8deg)
+        scale(1.1);
+}
+
+
+/* =====================================================
+   NUMBER
+===================================================== */
+
+.card-number {
+
+    position: absolute;
+
+    top: 28px;
+    right: 28px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: rgba(255,255,255,0.75);
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+[class^="info-card-"] h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+
+    color: white;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+[class^="info-card-"] p {
+
+    margin: 0;
+
+    max-width: 210px;
+
+    color: rgba(255,255,255,0.82);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.card-arrow {
+
+    position: absolute;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #006BFF;
+
+    color: white;
+
+    font-size: 18px;
+
+    transition: 0.3s ease;
+}
+
+[class^="info-card-"]:hover .card-arrow {
+
+    background: #1680ff;
+
+    transform:
+        translate(4px,-4px);
+}
+
+
+/* =====================================================
+   SLIDER BUTTON
+===================================================== */
+
+.slider-controls {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.slider-btn {
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #0f172a;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s ease;
+}
+
+.slider-btn:hover {
+
+    background: #006BFF;
+
+    transform: translateY(-3px);
+}
+
+.slider-btn:active {
+    transform: scale(0.9);
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.section-3 {
+
+    min-height: 100vh;
+
+    padding: 80px 6%;
+
+    scroll-margin-top: 80px;
+}
+
+.king-atas {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-evenly;
+
+    gap: 60px;
+
+    margin-top: 30px;
+}
+
+.gambar img {
+
+    width: 500px;
+    max-width: 100%;
+
+    height: 500px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    transition: 0.4s ease;
+}
+
+.gambar img:hover {
+
+    transform: scale(1.03);
+
+    box-shadow:
+        0 0 8px #006BFF,
+        0 0 20px rgba(0,107,255,0.7);
+}
+
+.penjelasan {
+
+    max-width: 650px;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.penjelasan h2 {
+
+    font-size: 30px;
+
+    color: #006BFF;
+}
+
+.penjelasan p {
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+.king-bawah {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 40px;
+
+    margin-top: 60px;
+
+    margin-bottom: 50px;
+}
+
+.utama {
+
+    padding: 20px 30px;
+
+    border-radius: 10px;
+
+    background: #f1f5f9;
+
+    transition: 0.4s ease;
+}
+
+.king-bawah-1 {
+
+    background: white;
+
+    border: 1px solid #006BFF;
+
+    padding: 20px 30px;
+
+    border-radius: 10px;
+}
+
+.king-bawah h2 {
+
+    text-align: center;
+
+    color: #006BFF;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.section-4 {
+
+    background: #006BFF;
+
+    padding: 50px 6%;
+
+    color: white;
+}
+
+.footer-utama {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo-footer-atas {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.logo-atas {
+
+    width: 80px;
+    height: 80px;
+}
+
+.logo-utama {
+
+    display: flex;
+
+    gap: 20px;
+
+    align-items: center;
+}
+
+/* =====================================================
+   RESPONSIVE MOBILE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    /* =========================
+       BODY
+       ========================= */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+
+    /* =========================
+       NAVBAR
+       ========================= */
+
+    nav {
+        position: fixed;
+
+        top: 10px;
+        left: 12px;
+        right: 12px;
+
+        width: auto;
+        height: 58px;
+
+        padding: 0 10px;
+
+        border-radius: 14px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        z-index: 9999;
+
+        background: rgba(255, 255, 255, 0.94);
+
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+
+    /* =========================
+       LOGO + NAMA
+       ========================= */
+
+    .logonama {
+        width: auto;
+        min-width: 0;
+
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+
+        gap: 5px;
+
+        flex-shrink: 0;
+    }
+
+
+    .logonama .logo {
+        width: 30px;
+        height: 30px;
+
+        flex-shrink: 0;
+    }
+
+
+    .logonama h2 {
+        width: 12ch;
+        min-width: 12ch;
+        max-width: 12ch;
+
+        font-size: 9px;
+
+        font-weight: 700;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        border-right: 1px solid #1677ff;
+
+        padding-right: 2px;
+    }
+
+
+    /* =========================
+       MENU NAVBAR
+       ========================= */
+
+    nav ul {
+        display: flex;
+
+        align-items: center;
+
+        margin: 0;
+        padding: 0;
+
+        flex-shrink: 1;
+
+        overflow: hidden;
+    }
+
+
+    nav ul li {
+        display: flex;
+
+        align-items: center;
+
+        gap: 0;
+
+        margin: 0;
+        padding: 0;
+    }
+
+
+    nav ul li a {
+        padding: 6px 5px;
+
+        font-size: 9px;
+
+        white-space: nowrap;
+
+        border-radius: 6px;
+
+        color: #475569;
+    }
+
+
+    nav ul li a::after {
+        bottom: 2px;
+        height: 1px;
+    }
+
+
+    /* =========================
+       BUTTON NAVBAR
+       ========================= */
+
+    nav .nav-cta {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        padding: 8px 10px;
+
+        border-radius: 8px;
+
+        font-size: 8px;
+
+        white-space: nowrap;
+    }
+
+
+    nav .nav-cta span {
+        margin-left: 2px;
+    }
+
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .section-1 {
+        width: 100%;
+
+        min-height: 100vh;
+
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .hero {
+        position: relative;
+
+        width: 100%;
+
+        margin: 0;
+
+        padding-top: 80px;
+        padding-bottom: 150px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+
+        text-align: center;
+
+        background-size: cover;
+
+        overflow: hidden;
+    }
+
+
+    /* =========================
+       LOGO SDM DI ATAS
+       ========================= */
+
+    .foto {
+        order: 1;
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        margin: 0;
+    }
+
+
+    .foto img {
+        width: 190px;
+        height: auto;
+        margin-bottom: -30px;
+        margin-top: 100px;
+
+        object-fit: contain;
+
+        position: relative;
+
+        z-index: 3;
+    }
+
+
+    /* =========================
+       JUDUL
+       ========================= */
+
+    .judul {
+        order: 2;
+
+        width: 100%;
+
+        max-width: 310px;
+
+        padding: 0;
+
+        margin: 0;
+
+        position: relative;
+
+        z-index: 3;
+
+        text-align: center;
+
+        color: white;
+    }
+
+
+    .judul-atas {
+        margin: 0 0 10px;
+
+        font-size: 10px;
+
+        color: #1680ff;
+    }
+
+
+    .sub-judul {
+        margin: 0 auto 15px;
+
+        max-width: 300px;
+
+        font-size: 28px;
+
+        line-height: 30px;
+
+        font-weight: 800;
+
+        text-align: center;
+    }
+
+
+    .judul-bawah {
+        margin: 0 auto 25px;
+
+        max-width: 285px;
+
+        font-size: 10px;
+
+        line-height: 17px;
+
+        color: #d5d5d5;
+
+        text-align: center;
+    }
+
+
+    /* =========================
+       BUTTON HERO
+       ========================= */
+
+    .jelajahi,
+    .tentangkami {
+
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 105px;
+        height: 36px;
+
+        padding: 0;
+
+        margin: 0 4px;
+
+        border-radius: 8px;
+
+        font-size: 9px;
+
+        text-align: center;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =========================
+       STATISTIC CARD
+       ========================= */
+
+    .hero-bawah {
+
+        position: absolute;
+
+        left: 0;
+        right: 0;
+
+        bottom: 18px;
+
+        width: 100%;
+
+        margin: 0;
+
+        padding: 0 10px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: stretch;
+
+        gap: 7px;
+
+        box-sizing: border-box;
+
+        z-index: 5;
+    }
+
+
+    .bwh-1 {
+
+        flex: 1;
+
+        min-width: 0;
+
+        height: 68px;
+
+        padding: 10px 5px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        border-radius: 12px;
+
+        background: rgba(255, 255, 255, 0.12);
+
+        backdrop-filter: blur(12px);
+
+        border: 1px solid rgba(255, 255, 255, 0.35);
+
+        box-sizing: border-box;
+
+    }
+
+
+    .bwh-1 h2 {
+        margin: 0 0 3px;
+
+        font-size: 17px;
+
+        line-height: 1;
+
+        color: #1680ff;
+    }
+
+
+    .bwh-1 p {
+        margin: 0;
+
+        font-size: 7px;
+
+        line-height: 1;
+
+        color: white;
+    }
+
+
+    /* =========================
+       PARTICLES
+       ========================= */
+
+    .hero-particles {
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        z-index: 2;
+
+        pointer-events: none;
+
+        overflow: hidden;
+    }
+
+
+    .hero-sparkles {
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 2;
+
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       DOCUMENT SECTION
+       ========================= */
+
+    .document-section {
+
+        width: 100%;
+
+        padding: 70px 0 50px;
+
+        overflow: hidden;
+
+        box-sizing: border-box;
+
+        background: #f8fafc;
+    }
+
+
+    /* =========================
+       HEADER PROGRAM
+       ========================= */
+
+    .section-header {
+
+        width: 100%;
+
+        padding: 0 20px;
+
+        margin: 0 0 30px;
+
+        text-align: center;
+
+        box-sizing: border-box;
+    }
+
+
+    .section-label {
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .section-header h2 {
+
+        margin: 5px 0 10px;
+
+        font-size: 30px;
+
+        line-height: 1.2;
+    }
+
+
+    .section-header p {
+
+        font-size: 11px;
+
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       SLIDER
+       ========================= */
+
+    .slider-wrapper {
+
+        width: 100%;
+
+        overflow: hidden;
+
+        cursor: grab;
+    }
+
+
+    .card-slider {
+
+        display: flex;
+
+        width: max-content;
+
+        gap: 12px;
+
+        padding: 15px 20px;
+
+        will-change: transform;
+    }
+
+
+    /* =========================
+       CARD PROGRAM
+       ========================= */
+
+    .info-card-1,
+    .info-card-2,
+    .info-card-3,
+    .info-card-4,
+    .info-card-5,
+    .info-card-6,
+    .info-card-7,
+    .info-card-8 {
+
+        flex: 0 0 220px;
+
+        width: 220px;
+
+        height: 270px;
+
+        padding: 22px;
+
+        border-radius: 18px;
+
+        box-sizing: border-box;
+    }
+
+
+    .card-icon {
+
+        width: 45px;
+        height: 45px;
+
+        margin-bottom: 25px;
+
+        font-size: 20px;
+
+        border-radius: 12px;
+    }
+
+
+    .card-number {
+
+        top: 20px;
+        right: 20px;
+
+        font-size: 11px;
+    }
+
+
+    .info-card-1 h3,
+    .info-card-2 h3,
+    .info-card-3 h3,
+    .info-card-4 h3,
+    .info-card-5 h3,
+    .info-card-6 h3,
+    .info-card-7 h3,
+    .info-card-8 h3 {
+
+        font-size: 20px;
+
+        line-height: 1.3;
+    }
+
+
+    .info-card-1 p,
+    .info-card-2 p,
+    .info-card-3 p,
+    .info-card-4 p,
+    .info-card-5 p,
+    .info-card-6 p,
+    .info-card-7 p,
+    .info-card-8 p {
+
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+
+    .card-arrow {
+
+        width: 35px;
+        height: 35px;
+
+        right: 18px;
+        bottom: 18px;
+
+        font-size: 15px;
+    }
+
+
+    /* =========================
+       SLIDER BUTTON
+       ========================= */
+
+    .slider-controls {
+
+        justify-content: center;
+
+        margin-top: 20px;
+
+        gap: 10px;
+    }
+
+
+    .slider-btn {
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 17px;
+    }
+
+
+   /* =========================
+   TENTANG KAMI
+   ========================= */
+
+.section-3 {
+    width: 100%;
+    min-height: auto;
+
+    padding: 70px 25px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   BAGIAN ATAS
+   ========================= */
+
+.king-atas {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 0;
+
+    gap: 35px;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+
+/* =========================
+   GAMBAR
+   ========================= */
+
+.gambar {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.gambar img {
+    width: 240px;
+    height: 240px;
+
+    margin: 0;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+}
+
+
+/* =========================
+   PENJELASAN
+   ========================= */
+
+.penjelasan {
+    width: 100%;
+
+    max-width: 500px;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: 'Poppins', sans-serif;
+
+    text-align: left;
+}
+
+
+/* =========================
+   JUDUL
+   ========================= */
+
+.penjelasan h2 {
+    margin: 0 0 20px;
+
+    font-size: 28px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    color: #006BFF;
+
+    text-align: center;
+}
+
+
+/* =========================
+   PARAGRAF
+   ========================= */
+
+.penjelasan p {
+    margin: 0;
+
+    padding: 0;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    font-weight: 400;
+
+    color: #475569;
+
+    text-align: left;
+
+    width: 100%;
+
+    margin-left: 15px;
+}
+
+
+/* =========================
+   HILANGKAN <br>
+   DI MOBILE
+   ========================= */
+
+.penjelasan p br {
+    display: none;
+}
+
+
+/* =========================
+   VISI MISI
+   ========================= */
+
+.king-bawah {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    margin-top: 45px;
+
+    margin-bottom: 20px;
+
+    width: 100%;
+}
+
+
+.utama {
+    width: 100%;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    border-radius: 15px;
+}
+
+
+.king-bawah-1 {
+    padding: 20px;
+
+    border-radius: 12px;
+}
+
+
+.king-bawah-1 p {
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    text-align: center;
+}
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    .section-4 {
+
+        width: 100%;
+
+        padding: 40px 20px;
+
+        box-sizing: border-box;
+    }
+
+
+    .footer-utama {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 35px;
+
+        text-align: center;
+    }
+
+
+    .logo-footer-atas {
+
+        justify-content: center;
+
+        align-items: center;
+    }
+
+
+    .logo-atas {
+
+        width: 65px;
+        height: 65px;
+    }
+
+
+    .research-footer h3 {
+
+        font-size: 13px;
+    }
+
+
+    .research-footer p {
+
+        font-size: 9px;
+    }
+
+
+    .research-kiri {
+
+        margin-bottom: 20px;
+    }
+
+
+    .research-kiri p {
+
+        font-size: 10px;
+
+        line-height: 1.6;
+    }
+
+
+    .logo-utama {
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+
+    .footer-tengah,
+    .footer-tengah2,
+    .footer-kanan {
+
+        width: 100%;
+    }
+
+
+    .footer-tengah h2,
+    .footer-tengah2 h2,
+    .footer-kanan h2 {
+
+        font-size: 18px;
+    }
+
+
+    .footer-tengah p,
+    .footer-tengah2 p {
+
+        font-size: 10px;
+
+        margin: 7px 0;
+    }
+
+
+    .footer-1,
+    .footer-2,
+    .footer-3 {
+
+        justify-content: center;
+
+        align-items: center;
+    }
+
+
+    .footer-1 p,
+    .footer-2 p,
+    .footer-3 p {
+
+        font-size: 10px;
+    }
+}
+
+
+/* =====================================================
+   HP KECIL
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+    nav {
+        left: 8px;
+        right: 8px;
+
+        height: 55px;
+
+        padding: 0 8px;
+    }
+
+
+    .logonama h2 {
+        font-size: 8px;
+
+        width: 11ch;
+        min-width: 11ch;
+        max-width: 11ch;
+    }
+
+
+    .logonama .logo {
+        width: 27px;
+        height: 27px;
+    }
+
+
+    nav ul li a {
+
+        padding: 5px 3px;
+
+        font-size: 8px;
+    }
+
+
+    nav .nav-cta {
+
+        padding: 7px 8px;
+
+        font-size: 7px;
+    }
+
+
+    .hero {
+
+        min-height: 650px;
+
+        padding-top: 75px;
+
+        padding-bottom: 130px;
+    }
+
+
+    .foto img {
+
+        width: 165px;
+
+        margin-bottom: 30px;
+    }
+
+
+    .sub-judul {
+
+        font-size: 25px;
+
+        line-height: 27px;
+    }
+
+
+    .judul-bawah {
+
+        font-size: 9px;
+
+        line-height: 15px;
+
+        max-width: 270px;
+    }
+
+
+    .jelajahi,
+    .tentangkami {
+
+        width: 100px;
+
+        height: 34px;
+
+        font-size: 8px;
+
+        margin: 0 3px;
+    }
+
+
+    .hero-bawah {
+
+        bottom: 12px;
+
+        padding: 0 8px;
+
+        gap: 5px;
+    }
+
+
+    .bwh-1 {
+
+        height: 62px;
+
+        border-radius: 10px;
+    }
+
+
+    .bwh-1 h2 {
+
+        font-size: 15px;
+    }
+
+
+    .bwh-1 p {
+
+        font-size: 6px;
+    }
+}
