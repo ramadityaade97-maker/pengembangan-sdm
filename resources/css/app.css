@@ -1,0 +1,72 @@
+/* Section-3 redesign – blue & white theme with glass‑morphism and subtle animations */
+
+/* Global smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section-3 container */
+.section-3 {
+  background: linear-gradient(135deg, #e0f7ff, #ffffff);
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Flex layout for the king block */
+.section-3 .king {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Glass‑morphism card */
+.section-3 .king-atas,
+.section-3 .king-bawah {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  flex: 1 1 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Slight lift on hover */
+.section-3 .king-atas:hover,
+.section-3 .king-bawah:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading colors – blue theme */
+.section-3 .king h2 {
+  color: #0066cc;
+  margin-bottom: 1rem;
+}
+
+/* Paragraph styling */
+.section-3 .king p {
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Fade‑in keyframes */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-3 {
+    padding: 2rem 1rem;
+  }
+  .section-3 .king {
+    flex-direction: column;
+  }
+}

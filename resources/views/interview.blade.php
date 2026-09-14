@@ -1,159 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Interview Coaching — Denpasar Institute</title>
+    <meta name="description" content="Interview Coaching Program untuk fresh graduates & profesional — latih pengetahuan, keterampilan, dan persiapan teknis & non-teknis wawancara kerja.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/interview.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={corePlugins:{preflight:false},theme:{extend:{fontFamily:{sans:['Poppins','sans-serif']}}}}</script>
+    <style>html{scroll-behavior:smooth} body{margin:0;background:#f8fafc;font-family:'Poppins',sans-serif} *,*::before,*::after{box-sizing:border-box}</style>
 </head>
-<body>
-     <nav>
-    <div class="logonama"><img class="logo" src="{{ asset('images/logoDI.png') }}" alt="Logo"><h2>Denpasar Institute</h2></div>
-        <ul>
-            <li>
-                <a href="/">Beranda</a>
-                <a href="">Tentang</a>
-                <a href="">Program</a>
-            </li>
-        </ul>
-    </nav>
+<body class="antialiased">
 
-    <section class="section-1">
-        <div class="hero"> 
-            <div class="judul">
-                <div class="tajuk-atas">
-                    <h2 class="sub-judul">INTERVIEW <span class="warna1">COACH</span>ING</h2>
-                    <p class="judul-bawah">Langkah utama dalam proses rekrutmen dan seleksi calon <br>
-                     karyawan baik di Lembaga 
-                      pemerintah maupun Lembaga
-                      swasta.</p>
-                </div>
+<nav id="navbar" class="elegant-nav">
+    <div class="elegant-nav-inner">
+        <a href="/" class="nav-brand">
+            <span class="nav-logo-wrap"><img src="{{ asset('images/logoDI.png') }}" alt="Denpasar Institute" class="nav-logo"></span>
+            <span class="nav-brand-text"><span class="nav-brand-title">Denpasar Institute</span><span class="nav-brand-sub">PUSAT KAJIAN PUBLIK — SEJAK 2017</span></span>
+        </a>
+        <div class="nav-links-pill"><a href="/" class="nav-link">Beranda</a><a href="/#tentang-kami" class="nav-link">Tentang</a><a href="/#galeri" class="nav-link">Galeri</a><a href="/#program" class="nav-link active">Program</a></div>
+        <div class="nav-actions"><a href="#kontak-ic" class="nav-cta-elegant"><span>Daftar Coaching</span><span class="nav-cta-arrow">↗</span></a><button id="navToggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button></div>
+    </div>
+    <div id="navMobile" class="nav-mobile"><a href="/" class="nav-mobile-link">Beranda</a><a href="/#tentang-kami" class="nav-mobile-link">Tentang</a><a href="/#galeri" class="nav-mobile-link">Galeri</a><a href="/#program" class="nav-mobile-link active">Program</a><a href="#kontak-ic" class="nav-mobile-cta">Daftar Coaching ↗</a></div>
+</nav>
 
-                <div class="gambar">
-                    <img src="{{ asset('images/logoSDM.png') }}" alt="Logo">
-                </div>
+<section class="relative overflow-hidden bg-[#020617] isolate">
+    <style>#heroIcCard{animation: icFloat 6s ease-in-out infinite} @keyframes icFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}} .ic-glow{animation: icGlow 8s ease-in-out infinite alternate} @keyframes icGlow{0%{transform:translate(0,0) scale(1);opacity:.5}100%{transform:translate(16px,-12px) scale(1.07);opacity:.85}}</style>
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+        <div class="ic-glow absolute -top-28 -left-40 w-[760px] h-[760px] bg-blue-600/20 rounded-full blur-[110px]"></div>
+        <div class="ic-glow absolute top-8 right-[-120px] w-[600px] h-[600px] bg-violet-500/14 rounded-full blur-[110px]" style="animation-delay:1s"></div>
+        <div class="ic-glow absolute bottom-[-80px] left-1/3 w-[820px] h-[420px] bg-cyan-500/10 rounded-full blur-[100px]" style="animation-delay:.6s"></div>
+        <div class="absolute inset-0 opacity-[0.035]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 28px 28px;"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020617]/55"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-10 sm:pb-14">
+        <div class="flex flex-wrap items-center gap-2 text-[12px]"><a href="/" class="text-slate-400 hover:text-white no-underline">Beranda</a><span class="text-slate-600">›</span><a href="/#program" class="text-slate-400 hover:text-white no-underline">Program</a><span class="text-slate-600">›</span><span class="text-white font-semibold">Interview Coaching</span><span class="ml-2 hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-400/20 text-amber-200 text-[11px] font-semibold tracking-widest uppercase">Fresh Graduate Friendly</span></div>
+        <div class="mt-7 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.07] border border-white/10 backdrop-blur text-[11px] font-semibold tracking-[0.16em] uppercase text-blue-200"><span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,.8)] animate-pulse"></span> Interview Coaching Program <span class="hidden sm:inline-flex ml-2 pl-2 border-l border-white/15 text-white/60 tracking-normal normal-case text-[11px] font-medium">Pemerintah & Swasta</span></div>
+                <h1 class="m-0 mt-4 font-extrabold tracking-tight leading-[0.92] text-white"><span class="block text-[34px] sm:text-[44px] lg:text-[56px]">INTERVIEW</span><span class="block font-['Cormorant_Garamond'] italic font-light text-[42px] sm:text-[54px] lg:text-[66px] leading-none mt-1 bg-gradient-to-r from-blue-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent">Coaching</span></h1>
+                <div class="mt-5 w-20 h-[3px] rounded-full bg-gradient-to-r from-blue-500 via-violet-500 to-cyan-400"></div>
+                <p class="m-0 mt-5 text-slate-300 text-sm sm:text-[15px] leading-relaxed max-w-xl">Langkah utama rekrutmen & seleksi — sesi wawancara adalah momen dua arah: <span class="text-white font-medium">perusahaan mengenal kompetensi pelamar, pelamar mengenal budaya perusahaan.</span></p>
+                <div class="mt-6 flex flex-wrap gap-2"><span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-xs font-medium text-slate-200 backdrop-blur">✦ Simulasi Interview</span><span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-xs font-medium text-slate-200 backdrop-blur">✦ Teknik Menjawab</span><span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-xs font-medium text-slate-200 backdrop-blur">✦ Negosiasi Awal</span></div>
+                <div class="mt-8 flex flex-wrap gap-3"><a href="#kontak-ic" class="inline-flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-white text-slate-900 text-sm font-bold shadow-[0_10px_30px_rgba(0,0,0,.25)] no-underline hover:translate-y-[-2px] transition-transform">Ikuti Program <span class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm">↗</span></a><a href="#manfaat" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 border border-white/20 backdrop-blur text-white text-sm font-semibold no-underline hover:bg-white hover:text-slate-900 transition-colors">Manfaat & Materi</a></div>
+                <div class="mt-8 flex items-center gap-3 text-slate-400 text-xs"><span class="inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span> Teori + praktik langsung</span><span class="w-1 h-1 rounded-full bg-white/20"></span><span>Untuk fresh graduates & profesional</span></div>
             </div>
-        </div>
-    </section>
-
-    <section class="section-2">
-        <div class="king">
-            <div class="foto">
-                <img src="{{ asset('images/logoSDM.png') }}" alt="Logo">
-            </div>
-
-            <div class="research-king">
-                <p>
-                    Job Interview adalah langkah utama dalam proses rekrutmen dan seleksi <br>
-                    calon karyawan baik di Lembaga pemerintah maupun Lembaga swasta. <br>
-Job Interview Session merupakan kesempatan yang baik bagi pelamar <br>
- kerja untuk lebih mengenal lembaga atau  perusahaan dan sebaliknya <br>
- perusahaan dapat mengenal kualifikasi dan kompetensi  pelamar secara lebih seksama. <br>
-Manfaat bagi lembaga atau perusahaan melaksanakan job interview session adalah: <br>
-- &nbsp; Menemukan kecocokan antara karakteristik pelamar dengan lowongan jabatan yang ada. <br>
-- &nbsp; Mencari informasi relevan untuk memenuhi persyaratan jabatan <br>
-- &nbsp; Mendapatkan informasi tambahan yang diperlukan bagi jabatan dan perusahaan <br>
-- &nbsp; Mengidentifikasi pelamar yang layak untuk diberikan penawaran kerja. <br>
-                </p>
-            </div>
-        </div>
-
-        <div class="research-king-bawah">
-                <p>
-                    Manfaat bagi pelamar melaksanakan job interview session adalah: <br><br>
-
-- &nbsp; Kesempatan menjelaskan secara langsung tentang pengetahuan, keterampilan, dan pengalaman kerja sebelumnya <br>
-- &nbsp; Kesempatan menemukan kecocokan tempat kerja sesuai dengan bakat dan minatnya <br>
-- &nbsp; Kesempatan melakukan nilai tawar sedari awal <br><br>
-
-Hal yang perlu dipersiapkan sebagai perlamar kerja, khususnya bagi fresh graduates adalah mencari tahu pertanyaan yang sering muncul dalam proses wawancara. Karena sejatinya setiap pertanyaan dalam wawancara kerja itu telah disusun sebelumnya.
-Pencari kerja perlu belajar secara teori dan praktik dalam menjawab pertanyaan dari interviewer. Artinya, ketika hendak mengikuti wawancara kerja, pelamar sudah siap dan yakin dengan segala kemungkinan pertanyaan yang muncul. 
-Untuk memfasilitasi pelamar kerja, khususnya dari kalangan fresh graduates, Denpasar Institute membuka program Interview Coaching Program untuk: <br><br>
-
-1. &nbsp; Memberikan pengetahuan dan wawasan wawancara kerja bagi pelamar <br>
-2. &nbsp; Memberikan ketrampilan tentang wawancara kerja bagi pelamar <br>
-3. &nbsp; Melatih persiapan teknis dan non teknis wawancara kerja <br>
- Hubungi kami untuk informasi lebih lanjut terkait program ini
-                </p>
-            </div>
-    </section>
-
-    <section class="section-4">
-    <div class="footer-utama">
-        <div class="footer-kiri">
-                <div class="logo-footer-atas">
-                    <img class="logo-atas" src="{{ asset('images/logoDI.png') }}" alt="Logo" >
-                    <div class="research-footer">
-                        <h3>DENPASAR INSTITUTE</h3>
-                        <p>Pusat kajian Publik</p>
-                </div>
-            </div class="bawah">
-            <div class="research-kiri">
-                <p>
-                    Lembaga riset independen yang menghasilkan <br>
-                    penelitian dan analisis kebijakan publik untuk <br>
-                    mendukung pembangunan indonesia yang <br>
-                    berkelanjutan.
-                </p>
-            </div>
-            <div class="social">
-                <div class="logo-utama">
-                    <img class="logo-footer" src="{{ asset('images/facebook.svg') }}" alt="Logo" >
-                    <img class="logo-footer" src="{{ asset('images/twitter.svg') }}" alt="Logo" >
-                    <img class="logo-footer" src="{{ asset('images/instagram.svg') }}" alt="Logo" >
-                    <img class="logo-footer" src="{{ asset('images/linkledin.svg') }}" alt="Logo" >
-                    <img class="logo-footer-5" src="{{ asset('images/youtube.svg') }}" alt="Logo" >
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-tengah">
-            <h2>Navigasi</h2>
-            <p>Beranda</p>
-            <p>Tentang</p>
-            <p>Program</p>
-            <p>Program Kami</p>
-        </div>
-
-        <div class="footer-tengah2">
-            <h2>Program</h2>
-            <p>SOP</p>
-            <p>Interview Coaching</p>
-            <p>Diklat Jabatan</p>
-            <p>karir Dosen</p>
-            <p>Lokakarya SDM</p>
-            <p>In House Training</p>
-            <p>Diklat SDM</p>
-            <p>Tailor-Made</p>
-        </div>
-
-        <div class="footer-kanan">
-            <h2>Kontak Kami</h2>
-            <div class="research-footer-kanan">
-                <div class="footer-1">
-                    <img class="logo-footer" src="{{ asset('images/location.svg') }}" alt="Logo" >
-                    <p>Jl. Genetri IV, Tonja</p>
-                </div>
-            </div>
-
-            <div class="research-footer-kanan">
-                <div class="footer-2">
-                    <img class="logo-footer" src="{{ asset('images/phone.svg') }}" alt="Logo" >
-                    <p>(62) 21 8189 896</p>
-                </div>
-            </div>
-
-            <div class="research-footer-kanan">
-                <div class="footer-3">
-                    <img class="logo-footer" src="{{ asset('images/email.svg') }}" alt="Logo" >
-                    <p>denpasarinstitute.com</p>
+            <div class="lg:col-span-5 relative flex items-center justify-center lg:justify-end">
+                <div class="absolute w-[420px] h-[420px] bg-gradient-to-br from-blue-600/25 via-violet-500/20 to-cyan-400/15 rounded-full blur-[50px] -z-10"></div>
+                <div id="heroIcCard" class="relative w-[320px] sm:w-[380px] bg-white rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,.5),0_8px_24px_rgba(37,99,235,.15)] border border-white/20 overflow-hidden">
+                    <div class="h-1.5 w-full bg-gradient-to-r from-blue-600 via-violet-500 to-cyan-400"></div>
+                    <div class="p-7 sm:p-8">
+                        <div class="flex items-start justify-between gap-4"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><span class="px-2.5 py-1 rounded-full bg-violet-50 border border-violet-200 text-violet-700 text-[11px] font-bold tracking-widest uppercase">Mock • Feedback • Ready</span></div>
+                        <div class="mt-5 mx-auto w-[132px] h-[132px] rounded-[1.5rem] bg-gradient-to-br from-slate-50 to-violet-50 border border-violet-100 flex items-center justify-center shadow-inner relative overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-violet-600/[0.06] to-transparent"></div><img src="{{ asset('images/LogoSDM.png') }}" alt="Logo SDM" class="relative w-[108px] h-[108px] object-contain drop-shadow-[0_8px_20px_rgba(124,58,237,.18)]"></div>
+                        <h3 class="m-0 mt-5 text-center text-slate-900 font-extrabold text-[17px] leading-tight">Interview Coaching</h3><p class="m-0 mt-1 text-center text-slate-500 text-xs font-medium tracking-widest uppercase">Denpasar Institute</p>
+                        <div class="mt-5 grid grid-cols-3 gap-2 text-center"><div class="rounded-xl bg-slate-50 border border-slate-100 p-2.5"><p class="m-0 text-[10px] font-semibold tracking-widest uppercase text-slate-400">Sesi</p><p class="m-0 text-sm font-extrabold text-slate-900">1-on-1</p></div><div class="rounded-xl bg-violet-50 border border-violet-100 p-2.5"><p class="m-0 text-[10px] font-semibold tracking-widest uppercase text-violet-600">Simulasi</p><p class="m-0 text-sm font-extrabold text-violet-700">Real Q&A</p></div><div class="rounded-xl bg-slate-50 border border-slate-100 p-2.5"><p class="m-0 text-[10px] font-semibold tracking-widest uppercase text-slate-400">Output</p><p class="m-0 text-sm font-extrabold text-slate-900">Siap Kerja</p></div></div>
+                        <div class="mt-5 flex items-center justify-between p-3 rounded-xl bg-slate-900 text-white"><div><p class="m-0 text-[11px] tracking-widest uppercase text-slate-400">Konsultasi awal</p><p class="m-0 text-sm font-bold">Gratis & terjadwal</p></div><span class="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center">›</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<section class="relative bg-[#f8fafc]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+            <div class="lg:col-span-5">
+                <div class="relative rounded-[1.75rem] bg-white border border-slate-200 shadow-[0_16px_40px_rgba(15,23,42,.08)] overflow-hidden p-6 sm:p-7">
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-violet-600 via-indigo-500 to-cyan-400"></div>
+                    <div class="w-11 h-11 rounded-xl bg-violet-600 text-white flex items-center justify-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg></div>
+                    <h2 class="m-0 mt-4 text-slate-900 font-extrabold text-[18px] leading-tight">Wawancara = kesempatan dua arah</h2>
+                    <p class="m-0 mt-2 text-slate-600 text-sm leading-relaxed">Job Interview Session memberi ruang pelamar mengenal lembaga/perusahaan — dan sebaliknya perusahaan menilai kualifikasi & kompetensi pelamar secara lebih seksama.</p>
+                    <div class="mt-5 p-4 rounded-xl bg-slate-900 text-white flex items-center gap-3"><img src="{{ asset('images/LogoSDM.png') }}" alt="" class="w-10 h-10 object-contain bg-white rounded-lg p-1"><div><p class="m-0 text-xs font-bold">Denpasar Institute</p><p class="m-0 text-[11px] text-slate-400">Pengembangan SDM • Sejak 2017</p></div><span class="ml-auto text-emerald-400 text-xs font-bold">● Coaching tersedia</span></div>
+                    <div class="mt-5 grid grid-cols-3 gap-2 text-center"><div class="rounded-xl bg-slate-50 border border-slate-100 p-3"><p class="m-0 text-lg font-extrabold text-slate-900">Pemerintah</p><p class="m-0 text-[11px] font-semibold text-slate-500">& Swasta</p></div><div class="rounded-xl bg-violet-50 border border-violet-100 p-3"><p class="m-0 text-lg font-extrabold text-violet-700">Fresh</p><p class="m-0 text-[11px] font-semibold text-violet-600">Graduates</p></div><div class="rounded-xl bg-slate-50 border border-slate-100 p-3"><p class="m-0 text-lg font-extrabold text-slate-900">1-on-1</p><p class="m-0 text-[11px] font-semibold text-slate-500">Feedback</p></div></div>
+                </div>
+            </div>
+            <div class="lg:col-span-7">
+                <p class="m-0 inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.16em] uppercase text-violet-600"><span class="w-6 h-0.5 rounded-full bg-violet-600"></span> Tentang Program</p>
+                <h2 class="m-0 mt-2 text-slate-900 font-extrabold text-[22px] sm:text-[26px] leading-tight">Job Interview adalah <span class="bg-gradient-to-r from-violet-600 to-cyan-500 bg-clip-text text-transparent">gerbang seleksi</span> — siapkan dengan matang</h2>
+                <p class="m-0 mt-3 text-slate-600 text-sm leading-relaxed">Job Interview adalah langkah utama dalam proses rekrutmen dan seleksi calon karyawan, baik di lembaga pemerintah maupun swasta. Setiap pertanyaan wawancara pada dasarnya telah disusun sebelumnya — pelamar perlu belajar teori & praktik menjawab agar siap menghadapi berbagai skenario.</p>
+                <div class="mt-6 grid sm:grid-cols-3 gap-3">
+                    <div class="rounded-2xl bg-white border border-slate-200 p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"><div class="w-9 h-9 rounded-xl bg-violet-50 border border-violet-100 text-violet-600 flex items-center justify-center">◈</div><h3 class="m-0 mt-3 font-bold text-slate-900 text-sm">Lebih percaya diri</h3><p class="m-0 mt-1 text-xs text-slate-500 leading-relaxed">Jawaban terstruktur, bahasa tubuh terjaga.</p></div>
+                    <div class="rounded-2xl bg-white border border-slate-200 p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"><div class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center">◎</div><h3 class="m-0 mt-3 font-bold text-slate-900 text-sm">Cocok & relevan</h3><p class="m-0 mt-1 text-xs text-slate-500 leading-relaxed">Temukan kecocokan peran & budaya kerja.</p></div>
+                    <div class="rounded-2xl bg-white border border-slate-200 p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"><div class="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center">↗</div><h3 class="m-0 mt-3 font-bold text-slate-900 text-sm">Nilai tawar awal</h3><p class="m-0 mt-1 text-xs text-slate-500 leading-relaxed">Siap bernegosiasi sejak wawancara.</p></div>
+                </div>
+                <div class="mt-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 border border-white/10"><p class="m-0 text-sm leading-relaxed text-slate-200">“Pencari kerja perlu <span class="text-white font-semibold">belajar teori & praktik menjawab pertanyaan interviewer</span> — agar yakin menghadapi segala kemungkinan pertanyaan.”</p><p class="m-0 mt-2 text-xs text-slate-400">— Denpasar Institute</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="manfaat" class="relative bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
+            <div>
+                <p class="m-0 inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.16em] uppercase text-blue-600"><span class="w-6 h-0.5 rounded-full bg-blue-600"></span> Untuk Perusahaan / Lembaga</p>
+                <h2 class="m-0 mt-2 text-slate-900 font-extrabold text-[18px] sm:text-[20px] leading-tight">Manfaat bagi pemberi kerja</h2>
+                <div class="mt-5 grid gap-3">
+                    <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 flex gap-3 hover:bg-white hover:shadow-md transition-all"><span class="shrink-0 w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xs font-extrabold">01</span><div><h3 class="m-0 font-bold text-slate-900 text-sm">Kecocokan karakteristik</h3><p class="m-0 mt-1 text-xs text-slate-600 leading-relaxed">Menemukan kesesuaian antara karakter pelamar dengan lowongan jabatan.</p></div></div>
+                    <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 flex gap-3 hover:bg-white hover:shadow-md transition-all"><span class="shrink-0 w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs font-extrabold">02</span><div><h3 class="m-0 font-bold text-slate-900 text-sm">Informasi relevan jabatan</h3><p class="m-0 mt-1 text-xs text-slate-600 leading-relaxed">Mencari & memvalidasi informasi untuk memenuhi persyaratan jabatan.</p></div></div>
+                    <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 flex gap-3 hover:bg-white hover:shadow-md transition-all"><span class="shrink-0 w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs font-extrabold">03</span><div><h3 class="m-0 font-bold text-slate-900 text-sm">Informasi tambahan perusahaan</h3><p class="m-0 mt-1 text-xs text-slate-600 leading-relaxed">Mendapatkan insight tambahan yang diperlukan bagi jabatan & perusahaan.</p></div></div>
+                    <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 flex gap-3 hover:bg-white hover:shadow-md transition-all"><span class="shrink-0 w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xs font-extrabold">04</span><div><h3 class="m-0 font-bold text-slate-900 text-sm">Identifikasi kandidat layak</h3><p class="m-0 mt-1 text-xs text-slate-600 leading-relaxed">Mengidentifikasi pelamar yang layak diberikan penawaran kerja.</p></div></div>
+                </div>
+            </div>
+            <div>
+                <p class="m-0 inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.16em] uppercase text-violet-600"><span class="w-6 h-0.5 rounded-full bg-violet-600"></span> Untuk Pelamar</p>
+                <h2 class="m-0 mt-2 text-slate-900 font-extrabold text-[18px] sm:text-[20px] leading-tight">Manfaat bagi pelamar</h2>
+                <div class="mt-5 grid gap-3">
+                    <div class="rounded-2xl bg-violet-50 border border-violet-200 p-4 flex gap-3"><span class="shrink-0 w-9 h-9 rounded-xl bg-violet-600 text-white flex items-center justify-center text-xs font-extrabold">01</span><div><h3 class="m-0 font-bold text-slate-900 text-sm">Ceritakan kompetensi langsung</h3><p class="m-0 mt-1 text-xs text-slate-600 leading-relaxed">Kesempatan menjelaskan pengetahuan, keterampilan, & pengalaman kerja sebelumnya.</p></div></div>
+                    <div class="rounded-2xl bg-violet-50 border border-violet-200 p-4 flex gap-3"><span class="shrink-0 w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs font-extrabold">02</span><div><h3 class="m-0 font-bold text-slate-900 text-sm">Temukan tempat yang cocok</h3><p class="m-0 mt-1 text-xs text-slate-600 leading-relaxed">Menemukan kecocokan tempat kerja sesuai bakat & minat.</p></div></div>
+                    <div class="rounded-2xl bg-violet-50 border border-violet-200 p-4 flex gap-3"><span class="shrink-0 w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs font-extrabold">03</span><div><h3 class="m-0 font-bold text-slate-900 text-sm">Nilai tawar sedari awal</h3><p class="m-0 mt-1 text-xs text-slate-600 leading-relaxed">Kesempatan melakukan negosiasi sejak proses wawancara.</p></div></div>
+                    <div class="mt-2 rounded-2xl bg-slate-900 text-white p-4 border border-white/10"><p class="m-0 text-xs font-semibold tracking-widest uppercase text-violet-300">Tips fresh graduates</p><p class="m-0 mt-1 text-sm leading-relaxed text-slate-200">Cari tahu pertanyaan yang sering muncul — latih jawaban secara <span class="text-white font-semibold">teori + praktik</span> agar siap & yakin saat hari-H.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="relative bg-[#f8fafc]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div class="max-w-3xl"><p class="m-0 inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.16em] uppercase text-blue-600"><span class="w-6 h-0.5 rounded-full bg-blue-600"></span> Program Kami</p><h2 class="m-0 mt-2 text-slate-900 font-extrabold text-[22px] sm:text-[26px] leading-tight">Interview Coaching Program — 3 fokus utama</h2><p class="m-0 mt-2 text-slate-500 text-sm leading-relaxed">Dirancang untuk memfasilitasi pelamar kerja, khususnya fresh graduates, agar tampil maksimal di setiap sesi wawancara.</p></div>
+        <div class="mt-8 grid md:grid-cols-3 gap-4">
+            <div class="group rounded-[1.5rem] bg-white border border-slate-200 p-6 hover:shadow-[0_16px_32px_rgba(15,23,42,.08)] hover:-translate-y-1 transition-all"><div class="w-11 h-11 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-sm">01</div><h3 class="m-0 mt-4 font-bold text-slate-900 text-sm">Pengetahuan & wawasan</h3><p class="m-0 mt-2 text-sm text-slate-600 leading-relaxed">Memberikan pengetahuan & wawasan wawancara kerja — dari jenis pertanyaan hingga ekspektasi interviewer.</p><div class="mt-4 h-1 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div></div>
+            <div class="group rounded-[1.5rem] bg-white border border-slate-200 p-6 hover:shadow-[0_16px_32px_rgba(15,23,42,.08)] hover:-translate-y-1 transition-all"><div class="w-11 h-11 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm">02</div><h3 class="m-0 mt-4 font-bold text-slate-900 text-sm">Keterampilan praktis</h3><p class="m-0 mt-2 text-sm text-slate-600 leading-relaxed">Melatih keterampilan menjawab — struktur STAR, bahasa tubuh, dan komunikasi persuasif.</p><div class="mt-4 h-1 rounded-full bg-gradient-to-r from-slate-900 to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity"></div></div>
+            <div class="group rounded-[1.5rem] bg-slate-900 border border-slate-800 p-6 hover:shadow-[0_16px_32px_rgba(15,23,42,.18)] hover:-translate-y-1 transition-all"><div class="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-cyan-300">03</div><h3 class="m-0 mt-4 font-bold text-white text-sm">Persiapan teknis & non-teknis</h3><p class="m-0 mt-2 text-sm text-slate-300 leading-relaxed">Simulasi, feedback personal, serta persiapan mental & penampilan hingga negosiasi.</p><div class="mt-4 h-1 rounded-full bg-gradient-to-r from-cyan-400 to-violet-400"></div></div>
+        </div>
+        <div class="mt-6 flex flex-wrap items-center gap-3 text-xs text-slate-500"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-violet-600"></span> Mock interview + feedback</span><span class="w-1 h-1 rounded-full bg-slate-300"></span><span>Sesi privat & kelompok tersedia</span></div>
+    </div>
+</section>
+
+<section id="kontak-ic" class="relative overflow-hidden bg-[#020617] isolate">
+    <div class="pointer-events-none absolute inset-0"><div class="absolute -top-32 -left-32 w-[640px] h-[640px] bg-violet-600/18 rounded-full blur-[90px]"></div><div class="absolute -bottom-24 -right-24 w-[560px] h-[560px] bg-cyan-500/12 rounded-full blur-[90px]"></div></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+        <div class="rounded-[1.75rem] bg-white/[0.06] backdrop-blur border border-white/10 p-6 sm:p-8 flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
+            <div><p class="m-0 inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.16em] uppercase text-cyan-300"><span class="w-6 h-0.5 rounded-full bg-cyan-400"></span> Siap tampil percaya diri?</p><h2 class="m-0 mt-2 text-white font-extrabold text-[20px] sm:text-[24px] leading-tight">Hubungi kami untuk informasi program</h2><p class="m-0 mt-2 text-slate-300 text-sm max-w-xl">Daftar Interview Coaching — dapatkan simulasi, koreksi jawaban, dan strategi negosiasi yang dipersonalisasi.</p><div class="mt-4 flex flex-wrap gap-2 text-xs"><span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-slate-200">Simulasi real Q&A</span><span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-slate-200">Feedback 1-on-1</span><span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-slate-200">Jadwal fleksibel</span></div></div>
+            <div class="w-full lg:w-auto shrink-0 flex flex-col gap-3"><a href="mailto:halo@denpasarinstitute.com" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-slate-900 text-sm font-bold no-underline hover:bg-slate-100 transition-colors">halo@denpasarinstitute.com <span class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs">↗</span></a><a href="tel:+62218189896" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-violet-600 hover:bg-violet-500 text-white text-sm font-bold no-underline transition-colors">☎ (62) 21 8189 896</a><p class="m-0 text-center text-[11px] text-slate-400">Jl. Genetri IV, Tonja — Denpasar, Bali • <a href="https://maps.google.com/?q=Jl.+Genetri+IV+Tonja+Denpasar" target="_blank" class="text-cyan-300 hover:text-white underline decoration-white/20">Lihat peta</a></p></div>
+        </div>
+        <p class="m-0 mt-6 text-center text-xs text-slate-500">© <span id="footerYearIc"></span> Denpasar Institute — Interview Coaching Program.</p>
+    </div>
+</section>
+
+<section class="relative overflow-hidden bg-[#020617] border-t border-white/10">
+    <div class="pointer-events-none absolute inset-0"><div class="absolute -top-24 right-10 w-[520px] h-[340px] bg-violet-600/14 rounded-full blur-[80px]"></div><div class="absolute bottom-0 left-0 w-[640px] h-[280px] bg-cyan-500/8 rounded-full blur-[90px]"></div></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
+        <div class="lg:col-span-5"><div class="flex items-center gap-3"><div class="w-[52px] h-[52px] rounded-2xl bg-white flex items-center justify-center shadow-[0_8px_28px_rgba(124,58,237,.35)] shrink-0"><img src="{{ asset('images/logoDI.png') }}" alt="Logo" class="w-9 h-9 object-contain"></div><div><h3 class="m-0 text-white font-extrabold tracking-tight text-[15px] leading-none">DENPASAR INSTITUTE</h3><p class="m-0 mt-1 inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase" style="color:#2563EB"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> Pusat Kajian Publik - Sejak 2017</p></div></div><p class="m-0 mt-4 text-slate-300 text-sm leading-relaxed max-w-md">Lembaga riset independen yang menghasilkan penelitian dan analisis kebijakan publik untuk mendukung pembangunan Indonesia yang berkelanjutan, berbasis data & kolaborasi.</p><div class="mt-5 flex gap-2.5"><a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/10 border border-white/15 backdrop-blur flex items-center justify-center"><img src="{{ asset('images/facebook.svg') }}" alt="Facebook" class="w-4 h-4 brightness-0 invert opacity-90"></a><a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-white/10 border border-white/15 backdrop-blur flex items-center justify-center"><img src="{{ asset('images/twitter.svg') }}" alt="Twitter" class="w-4 h-4 brightness-0 invert opacity-90"></a><a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 border border-white/15 backdrop-blur flex items-center justify-center"><img src="{{ asset('images/instagram.svg') }}" alt="Instagram" class="w-4 h-4 brightness-0 invert opacity-90"></a><a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/10 border border-white/15 backdrop-blur flex items-center justify-center"><img src="{{ asset('images/linkledin.svg') }}" alt="LinkedIn" class="w-4 h-4 brightness-0 invert opacity-90"></a><a href="#" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white/10 border border-white/15 backdrop-blur flex items-center justify-center"><img src="{{ asset('images/youtube.svg') }}" alt="YouTube" class="w-5 h-5 brightness-0 invert opacity-90"></a></div></div>
+        <div class="lg:col-span-2 lg:pl-4"><h2 class="m-0 mb-4 text-white font-bold text-sm tracking-wide flex items-center gap-2"><span class="w-7 h-0.5 rounded-full bg-blue-500 inline-block"></span> Navigasi</h2><nav class="flex flex-col gap-2.5"><a href="/" class="text-slate-300 text-sm no-underline hover:text-white">› Beranda</a><a href="/#tentang-kami" class="text-slate-300 text-sm no-underline hover:text-white">› Tentang</a><a href="/#galeri" class="text-slate-300 text-sm no-underline hover:text-white">› Galeri</a><a href="/#program" class="text-slate-300 text-sm no-underline hover:text-white">› Program Kami</a></nav></div>
+        <div class="lg:col-span-2"><h2 class="m-0 mb-4 text-white font-bold text-sm tracking-wide flex items-center gap-2"><span class="w-7 h-0.5 rounded-full bg-cyan-400 inline-block"></span> Program</h2><div class="flex flex-col gap-2 text-sm"><a href="/sop" class="text-slate-300 no-underline hover:text-white">SOP</a><a href="/interview" class="text-white font-semibold no-underline">Interview Coaching</a><a href="/diklat" class="text-slate-300 no-underline hover:text-white">Diklat Jabatan</a><a href="#" class="text-slate-300 no-underline hover:text-white">In House Training</a></div></div>
+        <div class="lg:col-span-3"><h2 class="m-0 mb-4 text-white font-bold text-sm tracking-wide flex items-center gap-2"><span class="w-7 h-0.5 rounded-full bg-orange-400 inline-block"></span> Kontak Kami</h2><div class="flex flex-col gap-3"><div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur"><div class="w-9 h-9 rounded-lg bg-white flex items-center justify-center shrink-0"><img src="{{ asset('images/location.svg') }}" alt="" class="w-4 h-4" style="filter: invert(28%) sepia(98%) saturate(2200%) hue-rotate(210deg);"></div><div><p class="m-0 text-[11px] font-semibold tracking-widest uppercase text-slate-400 leading-none">Alamat</p><p class="m-0 mt-1 text-sm font-medium text-white leading-tight">Jl. Genetri IV, Tonja - Denpasar, Bali</p></div></div><div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur"><div class="w-9 h-9 rounded-lg bg-white flex items-center justify-center shrink-0"><img src="{{ asset('images/phone.svg') }}" alt="" class="w-4 h-4" style="filter: invert(28%) sepia(98%) saturate(2200%) hue-rotate(210deg);"></div><div><p class="m-0 text-[11px] font-semibold tracking-widest uppercase text-slate-400 leading-none">Telepon</p><p class="m-0 mt-1 text-sm font-medium text-white leading-tight">(62) 21 8189 896</p></div></div><div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur"><div class="w-9 h-9 rounded-lg bg-white flex items-center justify-center shrink-0"><img src="{{ asset('images/email.svg') }}" alt="" class="w-4 h-4" style="filter: invert(28%) sepia(98%) saturate(2200%) hue-rotate(210deg);"></div><div><p class="m-0 text-[11px] font-semibold tracking-widest uppercase text-slate-400 leading-none">Email</p><p class="m-0 mt-1 text-sm font-medium text-white leading-tight">halo@denpasarinstitute.com</p></div></div></div></div>
+    </div>
+    <div class="relative border-t border-white/10 bg-black/20 backdrop-blur"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3"><p class="m-0 text-xs text-slate-400 text-center sm:text-left">© <span id="footerYear"></span> Denpasar Institute — Pusat Kajian Publik. All rights reserved.</p><div class="flex items-center gap-4 text-xs"><a href="#" class="text-slate-400 hover:text-white no-underline">Kebijakan Privasi</a><span class="w-1 h-1 rounded-full bg-white/20"></span><a href="#" class="text-slate-400 hover:text-white no-underline">Syarat Layanan</a><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="ml-2 w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center hover:bg-violet-600 hover:text-white transition-colors no-underline" aria-label="Kembali ke atas">↑</a></div></div></div>
+</section>
+
+<script>
+document.getElementById('footerYear').textContent=new Date().getFullYear();
+const y2=document.getElementById('footerYearIc'); if(y2) y2.textContent=new Date().getFullYear();
+const navbar=document.getElementById('navbar');const toggle=document.getElementById('navToggle');const mobile=document.getElementById('navMobile');
+if(toggle&&mobile){toggle.addEventListener('click',()=>{const o=mobile.classList.toggle('open');toggle.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';});mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');toggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}));document.addEventListener('click',e=>{if(!navbar.contains(e.target)&&mobile.classList.contains('open')){mobile.classList.remove('open');toggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}});}
+window.addEventListener('scroll',()=>{if(!navbar)return;if(window.scrollY>12)navbar.classList.add('scrolled');else navbar.classList.remove('scrolled');},{passive:true});
+</script>
 </body>
 </html>
