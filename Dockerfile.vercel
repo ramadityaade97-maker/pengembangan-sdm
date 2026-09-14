@@ -1,26 +1,31 @@
-# =========================
-# 1. Build frontend
-# =========================
+# =========================================================
+# 1. BUILD FRONTEND
+# =========================================================
 FROM node:22-bookworm AS frontend
 
 WORKDIR /app
 
-COPY package*.json ./
+# Copy dependency files
+COPY package.json package-lock.json* ./
+
+# Install dependencies
 RUN npm install
 
+# Copy source frontend
 COPY resources ./resources
 COPY public ./public
-COPY vite.config.js .
-COPY package.json .
+COPY vite.config.js ./
 
+# Build Vite
 RUN npm run build
 
 
-# =========================
-# 2. Laravel / PHP
-# =========================
+# =========================================================
+# 2. LARAVEL + FRANKENPHP
+# =========================================================
 FROM dunglas/frankenphp:php8.2-bookworm
 
+# Install PHP extensions required by Laravel + MySQL
 RUN install-php-extensions \
     pdo_mysql \
     mbstring \
@@ -30,36 +35,73 @@ RUN install-php-extensions \
     gd \
     zip
 
+# Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-COPY composer.json composer.lock ./
 
+# =========================================================
+# 3. COPY LARAVEL PROJECT
+# =========================================================
+COPY . .
+
+
+# =========================================================
+# 4. INSTALL PHP DEPENDENCIES
+# =========================================================
 RUN composer install \
     --no-dev \
     --no-interaction \
     --prefer-dist \
     --optimize-autoloader
 
-COPY . .
 
-# =========================
-# Aiven MySQL SSL Certificate
-# =========================
-RUN mkdir -p /app/storage/certs
-
-COPY storage/certs/ca.pem /app/storage/certs/ca.pem
-
-# Copy hasil Vite build
+# =========================================================
+# 5. COPY HASIL VITE BUILD
+# =========================================================
 COPY --from=frontend /app/public/build ./public/build
 
+
+# =========================================================
+# 6. PREPARE LARAVEL
+# =========================================================
+RUN mkdir -p storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
+
+RUN chmod -R 775 storage bootstrap/cache
+
+
+# =========================================================
+# 7. AIVEN MYSQL SSL CERTIFICATE
+# =========================================================
+RUN mkdir -p /app/storage/certs
+
+# Pastikan file ini memang ada di repository:
+# storage/certs/ca.pem
+COPY storage/certs/ca.pem /app/storage/certs/ca.pem
+
+
+# =========================================================
+# 8. CLEAR LARAVEL CACHE
+# =========================================================
 RUN php artisan config:clear
 RUN php artisan route:clear
 RUN php artisan view:clear
 
-ENV SERVER_NAME=:8080
 
-EXPOSE 8080
+# =========================================================
+# 9. VERCEL CONTAINER PORT
+# =========================================================
+ENV SERVER_NAME=:80
 
+EXPOSE 80
+
+
+# =========================================================
+# 10. START FRANKENPHP
+# =========================================================
 CMD ["frankenphp", "php-server", "--root", "/app/public"]
