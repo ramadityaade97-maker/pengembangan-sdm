@@ -6,9 +6,185 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================================
-   HERO PARTICLES
-========================================= */
+/* Keyboard focus must be visible on every interactive element, including the
+   ones that are styled with Tailwind utilities. */
+:focus-visible {
+    outline: 3px solid #2563EB;
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* Tailwind's preflight is disabled on this project, so these resets that the
+   framework would normally provide are declared here instead. */
+/* The whole site is set in Poppins (brand decision). Poppins is a geometric
+   sans: at display size it needs real negative tracking to stop the round
+   counters and the wide O from opening up, so these are tighter than a serif
+   would need. Weights stay at 600/700 because Poppins gets heavy above that. */
+.display-type {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+}
+
+.display-type-xl { font-size: clamp(2.1rem, 5.4vw, 3.4rem); }
+.display-type-lg { font-size: clamp(1.7rem, 4.2vw, 2.6rem); }
+.display-type-xl .display-accent { color: #8FC0F7; font-weight: 700; }
+
+/* Section heading on the light pages. */
+.section-title {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+}
+
+/* Masthead watermark. */
+.watermark {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+/* Emphasis inside a sentence. Poppins ships no italic cut, so font-style:italic
+   would be synthesised by slanting the glyphs, which reads cheap. Weight and
+   tracking do the job instead. */
+.display-accent-em {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* One word of a heading set in a connecting script. Poppins ships no connected
+   cut and no CSS can join glyphs, so "bersambung" needs a real second typeface.
+   Petit Formal Script keeps the upright structure a slanted copperplate throws
+   away: measured from the TTFs, its x-height is 73.7% of its cap height against
+   Poppins' 79.4%, where the copperplate scripts that were tried first fall to
+   54.7% and 41.8%. That ratio is the reason this one is used, since a formal
+   script still has to stand next to a geometric sans without reading as a
+   different document.
+   It is also outside the usual script roster (Pacifico, Lobster, Great Vibes,
+   Dancing Script), which reads as a template.
+   Size is optically matched, not guessed: cap height is 78.6% of its em against
+   Poppins' 69.8%, so 0.89em lands the script caps on the same visual line as the
+   sans at 30px. line-height is pinned to 1 so its 125% natural line box cannot
+   widen the heading, and letter-spacing is reset because negative display
+   tracking tears the joins apart. */
+/* One word of a heading set in a connecting script. Poppins ships no connected
+   cut and no CSS can join glyphs, so "bersambung" needs a real second typeface.
+   Petit Formal Script keeps the upright structure a slanted copperplate throws
+   away: measured from the TTFs, its x-height is 73.7% of its cap height against
+   Poppins' 79.4%, where the copperplate scripts that were tried first fall to
+   54.7% and 41.8%. That ratio is the reason this one is used, since a formal
+   script still has to stand next to a geometric sans without reading as a
+   different document.
+   It is also outside the usual script roster (Pacifico, Lobster, Great Vibes,
+   Dancing Script), which reads as a template.
+   Size is optically matched, not guessed: cap height is 78.6% of its em against
+   Poppins' 69.8%, so 0.89em lands the script caps on the same visual line as the
+   sans at 30px. line-height is pinned to 1 so its 125% natural line box cannot
+   widen the heading, and letter-spacing is reset because negative display
+   tracking tears the joins apart. */
+.accent-script {
+    font-family: 'Petit Formal Script', cursive;
+    font-weight: 400;
+    font-size: 0.89em;
+    line-height: 1;
+    letter-spacing: 0;
+    /* Brand blue, one step off pure #006BFF. The brand value measures 4.4933:1
+       on this section's #FCFCF9 background, which falls 0.007 short of the
+       4.5:1 body threshold, so it is nudged here to 5.08:1: visually the same
+       hue, but it clears AA without depending on the text counting as large. */
+    color: #0A62F0;
+}
+
+/* Carousel indicators.
+   The visible dot stays 10px, but the button itself is a 44px target so it can
+   be hit with a thumb. The dot is drawn as a pseudo-element so enlarging the
+   target does not enlarge the mark.
+   The row is allowed to wrap: eight 44px targets in a single line are 352px
+   plus gaps, which would overflow a 360px phone. */
+#galleryDots, #programDots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+}
+
+.carousel-dot {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.carousel-dot::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: #cbd5e1;
+    transition: background-color .2s ease, width .2s ease;
+}
+.carousel-dot:hover::before { background: var(--ink, #0f172a); }
+.carousel-dot.is-active::before { width: 24px; background: #006BFF; }
+.carousel-dot:focus-visible { outline: 3px solid #006BFF; outline-offset: -3px; border-radius: 8px; }
+
+/* These measured between 16 and 40px tall on a phone, too small for a thumb.
+   The rules are keyed to the shape of the markup (an anchor inside a vertically
+   stacked list, a breadcrumb row, a small pill button) rather than to one-off
+   utility class names, because the Tailwind classes on these legacy pages are
+   hand-written and would break on the next edit.
+   Wide screens are untouched: the whole block sits inside the breakpoint. */
+@media (max-width: 768px) {
+    nav > a,
+    .flex-col > a,
+    [class*="space-y-"] > a,
+    .flex.flex-wrap.items-center > a,
+    a.footer-link,
+    a.text-cyan-300,
+    .gallery-filter-btn,
+    .gallery-view-detail,
+    a.inline-flex.items-center.px-5,
+    a.inline-flex.items-center.px-6,
+    a.shrink-0.inline-flex.items-center,
+    a.contact-link {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+    }
+}
+
+/* Nav toggle size lives with the rest of the .nav-toggle rules further down
+   this file. It was 42px, two short of a comfortable thumb target. */
+
+/* Below the tablet breakpoint, text drops to its own larger step so nothing is
+   set below 12px, which is the floor for reading on a phone.
+   The class is repeated on purpose. The Tailwind Play CDN injects its
+   utilities at runtime, after this stylesheet, so a single .text-\[10px\]
+   selector ties with Tailwind on specificity and loses on source order.
+   Repeating it makes this rule (0,2,0) and wins. */
+@media (max-width: 768px) {
+    .text-\[10px\].text-\[10px\],
+    .text-\[11px\].text-\[11px\] { font-size: 12px; }
+}
+
+img { max-width: 100%; height: auto; }
+
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* HERO PARTICLES */
 
 .hero-particles {
     position: absolute;
@@ -26,9 +202,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE DASAR
-========================================= */
+/* PARTICLE DASAR */
 
 .particle {
     position: absolute;
@@ -53,9 +227,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 1
-========================================= */
+/* PARTICLE 1 */
 
 .p1 {
     top: 18%;
@@ -68,9 +240,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 2
-========================================= */
+/* PARTICLE 2 */
 
 .p2 {
     top: 28%;
@@ -89,9 +259,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 3
-========================================= */
+/* PARTICLE 3 */
 
 .p3 {
     top: 68%;
@@ -104,9 +272,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 4
-========================================= */
+/* PARTICLE 4 */
 
 .p4 {
     top: 22%;
@@ -125,9 +291,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 5
-========================================= */
+/* PARTICLE 5 */
 
 .p5 {
     bottom: 20%;
@@ -140,9 +304,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 6
-========================================= */
+/* PARTICLE 6 */
 
 .p6 {
     top: 48%;
@@ -161,9 +323,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 7
-========================================= */
+/* PARTICLE 7 */
 
 .p7 {
     bottom: 28%;
@@ -182,9 +342,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 8
-========================================= */
+/* PARTICLE 8 */
 
 .p8 {
     top: 15%;
@@ -197,9 +355,7 @@ body {
 }
 
 
-/* =========================================
-   ANIMATION
-========================================= */
+/* ANIMATION */
 
 @keyframes floatingParticle {
 
@@ -318,9 +474,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* =====================================================
-   ELEGANT NAVBAR — floating island glass
-===================================================== */
+/* ELEGANT NAVBAR — floating island glass */
 .hero-particles, .hero-sparkles { display:none !important; }
 
 .elegant-nav{
@@ -396,15 +550,15 @@ html {
 }
 .nav-brand-text{ display:flex; flex-direction:column; line-height:1; }
 .nav-brand-title{
-    font-family:'Poppins',sans-serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 15.5px;
-    font-weight: 800;
+    font-weight:700;
     letter-spacing: -.02em;
     color:#0f172a;
     white-space:nowrap;
 }
 .nav-brand-sub{
-    font-family:'Poppins',sans-serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: .14em;
@@ -427,7 +581,7 @@ html {
     flex-shrink:0;
 }
 .nav-link{
-    font-family:'Poppins',sans-serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 13px;
     font-weight: 600;
     color:#475569;
@@ -460,7 +614,7 @@ html {
     background: #2563EB;
     color:#fff !important;
     text-decoration:none !important;
-    font-family:'Poppins',sans-serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 13px;
     font-weight: 700;
     border-radius: 999px;
@@ -489,7 +643,8 @@ html {
 /* Toggle hamburger */
 .nav-toggle{
     display:none;
-    width: 42px; height: 42px;
+    /* 44px, not 42px: a thumb needs a 44px target, and 42 was two short. */
+    width: 44px; height: 44px;
     border-radius: 12px;
     border: 1px solid rgba(226,232,240,0.95);
     background: #fff;
@@ -523,7 +678,7 @@ html {
 }
 .nav-mobile.open{ display:flex; }
 .nav-mobile-link{
-    font-family:'Poppins',sans-serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 14px; font-weight:600;
     color:#334155;
     text-decoration:none;
@@ -551,6 +706,13 @@ html {
     .nav-toggle{ display:flex; }
     .nav-brand-sub{ display:none; }
     .nav-brand-title{ font-size: 15px; }
+}
+@media (max-width: 1020px){
+    /* Below this width the CTA loses its label and is left as a bare arrow
+       circle next to the hamburger, which says nothing about where it goes. The
+       mobile drawer already carries the same link with a real label
+       ("Ajukan Kolaborasi"), so the circle is redundant as well as unclear. */
+    .nav-cta-elegant{ display:none; }
 }
 @media (max-width: 520px){
     .nav-cta-elegant span:first-child{ display:none; }
@@ -587,13 +749,11 @@ html {
 }
 
 
-/* =====================================================
-   DENPASAR INSTITUTE
-===================================================== */
+/* DENPASAR INSTITUTE */
 
 .logonama h2 {
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
     margin: 0;
 
@@ -647,9 +807,7 @@ html {
 }
 
 
-/* =====================================================
-   ANIMASI TYPING
-===================================================== */
+/* ANIMASI TYPING */
 
 @keyframes denpasarTyping {
 
@@ -689,9 +847,7 @@ html {
 }
 
 
-/* =====================================================
-   CURSOR BERKEDIP
-===================================================== */
+/* CURSOR BERKEDIP */
 
 @keyframes denpasarCursor {
 
@@ -706,9 +862,7 @@ html {
 }
 
 
-/* =====================================================
-   MENU UL
-===================================================== */
+/* MENU UL */
 
 #navbar ul {
     margin: 0;
@@ -725,9 +879,7 @@ html {
 }
 
 
-/* =====================================================
-   MENU LI
-===================================================== */
+/* MENU LI */
 
 #navbar ul li {
     margin: 0;
@@ -742,13 +894,11 @@ html {
 }
 
 
-/* =====================================================
-   MENU LINK
-===================================================== */
+/* MENU LINK */
 
 #navbar ul li a {
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
     position: relative;
 
@@ -777,9 +927,7 @@ html {
 }
 
 
-/* =====================================================
-   HOVER MENU
-===================================================== */
+/* HOVER MENU */
 
 #navbar ul li a:hover {
 
@@ -793,9 +941,7 @@ html {
 }
 
 
-/* =====================================================
-   GARIS BAWAH MENU
-===================================================== */
+/* GARIS BAWAH MENU */
 
 #navbar ul li a::after {
 
@@ -834,9 +980,7 @@ html {
 }
 
 
-/* =====================================================
-   GARIS CAHAYA NAVBAR
-===================================================== */
+/* GARIS CAHAYA NAVBAR */
 
 #navbar::before {
 
@@ -865,9 +1009,7 @@ html {
 }
 
 
-/* =====================================================
-   NAVBAR SAAT SCROLL
-===================================================== */
+/* NAVBAR SAAT SCROLL */
 
 #navbar.scrolled {
 
@@ -885,7 +1027,7 @@ html {
     padding: 10px 20px;
     border-radius: 10px;
     color: white;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     background-color: #006BFF;
     transition: 0.4s ease;
 }
@@ -914,7 +1056,7 @@ html {
     max-width: 1300px;
     min-height: 650px;
     margin: 30px auto;
-    background-image: url('/images/Group 21.png');
+    background-image: url('/images/group-21.png');
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -924,7 +1066,7 @@ html {
 
 .hero {
     position: relative;
-    background-image: url('/images/Group 25.png');
+    background-image: url('/images/group-25.png');
     width: 100%;
     height: 800px;
     background-size: cover;
@@ -988,7 +1130,7 @@ html {
 
 .judul {
     color: white;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     padding-left: 120px;
     margin-top: 60px;
     position: relative;
@@ -998,19 +1140,19 @@ html {
 .judul-atas {
     margin-bottom: -30px;
     color: #006BFF;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .sub-judul {
     font-size: 48px;
     margin-bottom: -5px;
     line-height: 50px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .judul-bawah {
     margin-bottom: 40px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     color: #c8c8c8;
 }
 
@@ -1025,7 +1167,7 @@ html {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     margin-right: 20px;
     transition: color 0.4s ease;
     display: inline-block;
@@ -1105,9 +1247,7 @@ html {
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .section-header {
     max-width: 650px;
@@ -1126,7 +1266,7 @@ html {
 
     margin-bottom: 10px;
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .section-header h2 {
@@ -1136,7 +1276,7 @@ html {
 
     font-size: 48px;
     font-weight: 700;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .section-header p {
@@ -1146,13 +1286,11 @@ html {
 
     line-height: 1.7;
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 
-/* =========================
-   SLIDER
-========================= */
+/* SLIDER */
 
 .slider-wrapper {
     width: 100%;
@@ -1172,9 +1310,7 @@ html {
 }
 
 
-/* =========================
-   CARD CONTAINER
-========================= */
+/* CARD CONTAINER */
 
 .card-slider {
     display: flex;
@@ -1193,9 +1329,7 @@ html {
 }
 
 
-/* =========================
-   CARD
-========================= */
+/* CARD */
 
 .info-card-1 {
 
@@ -1227,9 +1361,9 @@ html {
         transform 0.35s ease,
         box-shadow 0.35s ease;
 
-    background-image: url('/images/hero 2.png');
+    background-image: url('/images/hero-2.png');
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .info-card-2 {
@@ -1262,9 +1396,9 @@ html {
         transform 0.35s ease,
         box-shadow 0.35s ease;
 
-    background-image: url('/images/hero 3.png');
+    background-image: url('/images/hero-3.png');
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .info-card-3 {
@@ -1297,11 +1431,11 @@ html {
         transform 0.35s ease,
         box-shadow 0.35s ease;
 
-    background-image: url('/images/hero 4.png');
+    background-image: url('/images/hero-4.png');
 
     background-position: center;
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .info-card-4 {
@@ -1334,9 +1468,9 @@ html {
         transform 0.35s ease,
         box-shadow 0.35s ease;
 
-    background-image: url('/images/hero 5.png');
+    background-image: url('/images/hero-5.png');
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .info-card-5 {
@@ -1369,11 +1503,11 @@ html {
         transform 0.35s ease,
         box-shadow 0.35s ease;
 
-    background-image: url('/images/hero 6.png');
+    background-image: url('/images/hero-6.png');
 
     background-position: center;
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .info-card-6 {
@@ -1406,11 +1540,11 @@ html {
         transform 0.35s ease,
         box-shadow 0.35s ease;
 
-    background-image: url('/images/hero 7.png');
+    background-image: url('/images/hero-7.png');
 
     background-position: center;
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .info-card-7 {
@@ -1443,11 +1577,11 @@ html {
         transform 0.35s ease,
         box-shadow 0.35s ease;
 
-    background-image: url('/images/hero 8.png');
+    background-image: url('/images/hero-8.png');
 
     background-position: center;
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .info-card-8 {
@@ -1480,17 +1614,15 @@ html {
         transform 0.35s ease,
         box-shadow 0.35s ease;
 
-    background-image: url('/images/hero 9.png');
+    background-image: url('/images/hero-9.png');
 
     background-position: center;
 
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 
-/* =========================
-   BACKGROUND CIRCLE
-========================= */
+/* BACKGROUND CIRCLE */
 
 .info-card-1::before {
     content: "";
@@ -1515,9 +1647,7 @@ html {
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* HOVER */
 
 .info-card-1:hover {
     transform: translateY(-10px);
@@ -1549,9 +1679,7 @@ html {
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* HOVER */
 
 .info-card-2:hover {
     transform: translateY(-10px);
@@ -1583,9 +1711,7 @@ html {
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* HOVER */
 
 .info-card-3:hover {
     transform: translateY(-10px);
@@ -1617,9 +1743,7 @@ html {
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* HOVER */
 
 .info-card-4:hover {
     transform: translateY(-10px);
@@ -1651,9 +1775,7 @@ html {
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* HOVER */
 
 .info-card-5:hover {
     transform: translateY(-10px);
@@ -1685,9 +1807,7 @@ html {
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* HOVER */
 
 .info-card-6:hover {
     transform: translateY(-10px);
@@ -1719,9 +1839,7 @@ html {
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* HOVER */
 
 .info-card-7:hover {
     transform: translateY(-10px);
@@ -1753,9 +1871,7 @@ html {
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* HOVER */
 
 .info-card-8:hover {
     transform: translateY(-10px);
@@ -1765,9 +1881,7 @@ html {
 }
 
 
-/* =========================
-   ICON
-========================= */
+/* ICON */
 
 .card-icon {
     position: relative;
@@ -1796,9 +1910,7 @@ html {
 }
 
 
-/* =========================
-   NUMBER
-========================= */
+/* NUMBER */
 
 .card-number {
     position: absolute;
@@ -1814,9 +1926,7 @@ html {
 }
 
 
-/* =========================
-   TITLE
-========================= */
+/* TITLE */
 
 .info-card h3 {
     position: relative;
@@ -1827,9 +1937,7 @@ html {
 }
 
 
-/* =========================
-   DESCRIPTION
-========================= */
+/* DESCRIPTION */
 
 .info-card p {
     position: relative;
@@ -1846,9 +1954,7 @@ html {
 }
 
 
-/* =========================
-   ARROW
-========================= */
+/* ARROW */
 
 .card-arrow {
     position: absolute;
@@ -1954,7 +2060,7 @@ html {
 
 .bwh-1 p {
     color: white;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     margin-top: -20px;
 }
 
@@ -1962,7 +2068,7 @@ html {
     display: block;
     font-size: 32px;
     color: #1680ff;
-    font-weight: 800;
+    font-weight:700;
 }
 
 .content {
@@ -2004,7 +2110,7 @@ html {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('/images/Group 25.png');
+    background-image: url('/images/group-25.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
@@ -2057,14 +2163,14 @@ html {
 }
 
 .research p {
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .hero-content h2 {
     margin-left: 40px;
     margin-top: 40px;
     color: white;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .content-bawah {
@@ -2123,43 +2229,43 @@ html {
 
 .research-bawah-1 p {
     font-size: 10px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .h41 {
     font-size: 12px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .h42 {
     font-size: 11px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .h43 {
     margin-top: 18px;
     margin-bottom: 13px;
     font-size: 9px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .h44 {
     margin-bottom: 13px;
     font-size: 11px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .h45 {
     margin-top: 16px;
     margin-bottom: 15px;
     font-size: 9px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .hero-content-bawah h2 {
     margin-left: 65px;
     margin-bottom: -20px;
-    font-family: 'poppins';
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 :root {
@@ -2169,7 +2275,7 @@ html {
     --bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.2), var(--primary) 60%);
 }
 
-/* ---------- Section‑3 Particle Background ---------- */
+/* Section‑3 Particle Background */
 .section-3 {
     position: relative;
     overflow: hidden;
@@ -2200,7 +2306,7 @@ html {
     animation: sparkle 3s ease-in-out infinite;
 }
 
-/* ---------- Section‑3 Layout ---------- */
+/* Section‑3 Layout */
 .king-atas {
     display: flex;
     flex-wrap: wrap;
@@ -2216,7 +2322,7 @@ html {
 
 .penjelasan {
     color: #001f3f;
-    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     line-height: 1.6;
     margin-top: -60px;
 }
@@ -2225,7 +2331,7 @@ html {
     font-size: 3rem;
     color: var(--primary);
     margin-bottom: 0.8rem;
-    font-family: 'Playfair Display', serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-weight: 700;
     letter-spacing: 0.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -2235,7 +2341,7 @@ html {
     font-size: 1.125rem;
     line-height: 1.8;
     margin-top: 0.5rem;
-    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .gambar img {
@@ -2280,7 +2386,7 @@ html {
 }
 
 
-/* ---------- Cards (king‑bawah) ---------- */
+/* Cards (king‑bawah) */
 .king-bawah {
     display: flex;
     flex-wrap: wrap;
@@ -2305,7 +2411,7 @@ html {
 }
 
 .king-bawah-1 p {
-    font-family: 'Poppins', sans-serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     color: #001f3f;
     line-height: 1.6;
 }
@@ -2317,7 +2423,7 @@ html {
     margin: 0.5rem 0;
 }
 
-/* ---------- Main Content (utama) ---------- */
+/* Main Content (utama) */
 .utama {
     background-color: #f8f9fa;
     border-radius: 12px;
@@ -2344,7 +2450,7 @@ html {
     opacity: 0.2;
 }
 
-/* ---------- Responsive Adjustments ---------- */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
 
     .king-atas,
@@ -2364,25 +2470,10 @@ html {
     /* Removed old duplicated CSS definitions to prevent conflicts with the new modern styles */
 }
 
-.footer-utama {
-    background-color: #006BFF;
-    display: flex;
-    justify-content: space-around;
-    color: white;
-    font-family: 'poppins';
-}
-
-.footer-1,
-.footer-2,
-.footer-3 {
-    display: flex;
-    gap: 10px;
-}
-
-.logo-footer {
-    justify-content: center;
-    align-items: center;
-}
+/* Removed: .footer-utama (forced a #006BFF background the markup had been
+   overriding with !bg-transparent), .footer-1/2/3, .logo-footer,
+   .logo-footer-atas, .logo-atas, .research-kiri. All were unreferenced after
+   the footer was rebuilt, and the footer grid now handles layout directly. */
 
 .secial {
     display: flex;
@@ -2405,17 +2496,12 @@ html {
     display: flex;
 }
 
-.logo-footer-atas {
-    display: flex;
-}
-
-.section-4 {
 .section-4 {
     background-color: #006BFF;
     padding: 30px 30px;
 }
 
-/* ---------- Gallery Section ---------- */
+/* Gallery Section */
 .section-gallery {
     padding: 60px 0;
     background: var(--bg-gradient);
@@ -2423,7 +2509,7 @@ html {
 }
 
 .gallery-title {
-    font-family: 'Playfair Display', serif;
+    font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 2.5rem;
     color: var(--primary);
     margin-bottom: 2rem;
@@ -2485,16 +2571,7 @@ html {
     .gallery-title { font-size: 2rem; }
 }
 
-}
 
-.logo-atas {
-    width: 100px;
-    height: 100px;
-}
-
-.research-kiri {
-    margin-bottom: 50px;
-}
 
 .research-footer p {
     margin-top: -20px;
@@ -2502,9 +2579,7 @@ html {
     font-size: 15px;
 }
 
-/* =====================================================
-   GALLERY SECTION
-===================================================== */
+/* GALLERY SECTION */
 .section-gallery {
     padding: 60px 0;
     text-align: center;
@@ -2514,7 +2589,7 @@ html {
 }
 
 .gallery-title {
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 2.5rem;
     color: #0f172a;
     margin-bottom: 0.5rem;
@@ -2522,7 +2597,7 @@ html {
 }
 
 .gallery-subtitle {
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
     color: #475569;
     margin-bottom: 3rem;
     font-size: 1rem;
@@ -2637,7 +2712,7 @@ html {
     }
 }
 
-/* Global: hilangkan garis bawah pada semua link/teks bergaris + jadikan putih */
+/* Global: hilangkan garis bawah pada semua link/teksbergaris + jadikan putih */
 a, a:hover, a:focus, a:active, a:visited,
 u, ins {
     text-decoration: none !important;
@@ -2648,6 +2723,15 @@ u, ins {
     text-decoration-color: transparent !important;
     border-bottom: none !important;
     color: #ffffff !important;
+}
+/* The rule above forces every anchor white, so an anchor that is itself white
+   ends up white on white and its label disappears. The hero call to action and
+   the eight program cards were all rendering at 1:1 contrast, at every screen
+   width. This is the one exception: a white surface gets dark text. */
+a.bg-white,
+a.bg-white:hover,
+a.bg-white:focus {
+    color: #0F172A !important;
 }
 a::after, a::before { text-decoration: none !important; }
 #navbar ul li a::after, .nav-link::after { display: none !important; width: 0 !important; }

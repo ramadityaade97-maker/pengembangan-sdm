@@ -1,0 +1,36 @@
+# Without this file, `COPY . .` in Dockerfile.vercel copies the entire working
+# directory into the image. That includes the local .env, whose APP_KEY would
+# then be baked into an image layer where it stays even if the file is deleted
+# later. .gitignore does not apply to Docker; only .dockerignore does.
+.env
+.env.*
+!.env.example
+
+# Local tooling and VCS
+.git
+.gitignore
+.github
+node_modules
+vendor
+npm-debug.log
+yarn-error.log
+
+# Editor / OS cruft
+.idea
+.vscode
+.DS_Store
+Thumbs.db
+
+# Not needed to serve the site
+tests
+anti-slop
+*.md
+!README.md
+
+# Runtime artefacts are generated inside the container
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+public/build
+public/hot

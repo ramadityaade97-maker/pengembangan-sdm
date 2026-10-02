@@ -1,0 +1,542 @@
+/* Shared layout for the program pages (training, tailor, lokakarya, karier, sdm).
+   Each page sets --hero-image in its own <style> block; everything else is common. */
+
+:root {
+    --nav-h: 72px;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --accent: #006BFF;
+    --accent-dark: #0052C7;
+    --line: #e2e8f0;
+    --maxw: 1180px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-text-size-adjust: 100%;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 2000;
+    background: #fff;
+    color: var(--accent);
+    padding: 12px 20px;
+    font-weight: 600;
+}
+
+.skip-link:focus { left: 8px; top: 8px; }
+
+/* ---------- nav ---------- */
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 20px;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+}
+
+.logonama {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+}
+
+.logonama .logo { width: 48px; height: 48px; }
+
+.logonama span { font-size: 1.05rem; font-weight: 600; line-height: 1.2; }
+
+.nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--ink);
+    position: relative;
+}
+
+.nav-toggle span::before,
+.nav-toggle span::after { content: ''; position: absolute; }
+.nav-toggle span::before { top: -6px; }
+.nav-toggle span::after { top: 6px; }
+
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 16px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.nav-links a:hover { background: #f1f5f9; color: var(--accent); }
+
+.nav-links a[aria-current="page"] { color: var(--accent); font-weight: 600; }
+.nav-links a.is-current { color: var(--accent); font-weight: 600; }
+
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ---------- hero ---------- */
+
+/* The hero text sits on a photo, so it needs a scrim: the lightest part of
+   any hero image must still clear 4.5:1 against the text. */
+.hero {
+    position: relative;
+    background-image: var(--hero-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #0f172a;
+    color: #fff;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    padding: 56px 20px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.72) 100%);
+}
+
+.hero-inner {
+    position: relative;
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+}
+
+.judul h1 {
+    margin: 0;
+    font-size: clamp(1.9rem, 6vw, 3rem);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.judul h1 .warna1 { color: #9cc4ff; }
+
+.judul p {
+    margin: 20px 0 0;
+    max-width: 46ch;
+    font-size: 1.02rem;
+    color: #e2e8f0;
+}
+
+/* ---------- body section ---------- */
+
+.section-body { padding: 56px 20px; }
+
+.wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: start;
+}
+
+.foto img { width: 100%; border-radius: 10px; object-fit: cover; }
+
+.prose h2 {
+    margin: 0 0 16px;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.prose h3 { margin: 32px 0 12px; font-size: 1.05rem; font-weight: 600; }
+
+.prose p { margin: 0 0 18px; color: var(--ink-soft); }
+
+.prose ol { margin: 0 0 24px; padding-left: 22px; color: var(--ink-soft); }
+.prose ol li { margin-bottom: 12px; }
+
+.prose ul { margin: 0 0 24px; padding-left: 22px; color: var(--ink-soft); }
+.prose ul li { margin-bottom: 8px; }
+
+.cta-line { margin: 0; font-weight: 600; color: var(--ink); }
+
+.cta-line a { color: var(--accent); }
+
+/* ---------- footer ---------- */
+
+.footer {
+    background: var(--accent-dark);
+    color: #fff;
+    padding: 48px 20px;
+}
+
+.footer-grid {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr);
+}
+
+.footer h2 {
+    margin: 0 0 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.footer-brand img { width: 56px; height: 56px; }
+.footer-brand strong { display: block; font-size: 1.05rem; }
+.footer-brand span { font-size: 0.82rem; color: #cfe0ff; }
+
+.footer p { margin: 0 0 12px; font-size: 0.92rem; color: #eaf1ff; }
+
+.footer ul { list-style: none; margin: 0; padding: 0; }
+.footer li { margin-bottom: 2px; }
+
+.footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 0.92rem;
+    text-decoration: none;
+    color: #eaf1ff;
+}
+
+.footer a:hover { color: #fff; text-decoration: underline; }
+
+.footer-contact { display: flex; align-items: flex-start; gap: 10px; }
+.footer-contact img { width: 20px; height: 20px; margin-top: 12px; flex: none; }
+.footer-contact a { min-height: 44px; }
+
+/* ---------- tablet ---------- */
+
+@media (max-width: 1024px) {
+    .wrap { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .foto { max-width: 420px; }
+    .footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; }
+    .hero { min-height: auto; }
+}
+
+/* ---------- mobile nav ---------- */
+
+@media (max-width: 768px) {
+    :root { --nav-h: 64px; }
+
+    .nav { padding: 0 16px; }
+
+    .nav-toggle { display: inline-flex; width: 44px; height: 44px; }
+
+    /* Footer and inbox link rows measured about 20px tall on a phone. They get a
+       real 44px row without changing how the list reads. */
+    .footer ul li { min-height: 44px; display: flex; align-items: center; }
+    .footer-contact { min-height: 44px; }
+    .inbox-item-foot .btn-quiet { min-height: 44px; }
+
+    /* These measured 21 to 23px tall on a phone. */
+    .cta-line a,
+    .kolab-aside a,
+    .aside-contact a { display: inline-flex; align-items: center; min-height: 44px; }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        padding: 8px 16px 16px;
+        display: none;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links a { min-height: 48px; border-radius: 6px; }
+
+    .section-body { padding: 40px 16px; }
+    .hero { padding: 44px 16px; }
+    .footer { padding: 40px 16px; }
+}
+
+@media (max-width: 560px) {
+    .footer-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .logonama span { font-size: 0.95rem; }
+    .footer h2 { margin-bottom: 10px; }
+}
+
+/* Collaboration form (/kolaborasi) */
+
+.wrap-narrow { max-width: 880px; margin: 0 auto; }
+
+.page-head { padding: 48px 20px 8px; }
+.page-head h1 { margin: 0 0 10px; font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.page-head-lede { margin: 0; max-width: 62ch; color: var(--ink-soft); }
+
+.kolab-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: 48px;
+    align-items: start;
+}
+
+.field { margin-bottom: 22px; }
+.field label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.95rem; }
+.req { color: #B91C1C; }
+.opt { color: var(--ink-soft); font-weight: 400; }
+
+/* The border is the only thing showing where a field is, so it has to clear
+   3:1 on white. --line (#E2E8F0) measures 1.23:1 and was not good enough. */
+.field input,
+.field textarea {
+    display: block;
+    width: 100%;
+    padding: 11px 13px;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid #8B95A3;
+    border-radius: 6px;
+}
+.field textarea { resize: vertical; min-height: 130px; }
+.field input::placeholder, .field textarea::placeholder { color: #6B7683; }
+
+/* The ring already exists globally at 3px on the accent. The border changes too
+   so the focused field is unmistakable even if the outline gets clipped. */
+.field input:focus,
+.field textarea:focus { border-color: var(--accent); outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"] { border-color: #B91C1C; }
+
+.field-hint { margin: 6px 0 0; font-size: 0.85rem; color: var(--ink-soft); }
+.field-error { margin: 6px 0 0; font-size: 0.85rem; font-weight: 600; color: #B91C1C; }
+
+/* Off-screen rather than display:none, because some bots skip hidden inputs. */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 28px; }
+.btn-primary {
+    padding: 13px 26px;
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+.actions-note { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+
+/* No box on the aside: the heading and the two-column layout already mark it
+   off, so a panel border would be an affordance invented for looks. */
+.kolab-aside h2 { margin: 0 0 12px; font-size: 1.1rem; font-weight: 700; }
+.kolab-aside p { margin: 0 0 14px; color: var(--ink-soft); font-size: 0.95rem; }
+.aside-list { margin: 0 0 18px; padding-left: 20px; color: var(--ink-soft); font-size: 0.95rem; }
+.aside-list li { margin-bottom: 8px; }
+.aside-contact { padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.95rem; }
+
+.notice { padding: 20px 22px; border-radius: 8px; margin-bottom: 28px; }
+.notice h2 { margin: 0 0 8px; font-size: 1.15rem; font-weight: 700; }
+.notice p { margin: 0 0 10px; }
+.notice p:last-child { margin-bottom: 0; }
+.notice-ok { background: #ECFDF5; border: 1px solid #065F46; }
+.notice-ok h2, .notice-ok p { color: #065F46; }
+.notice-aside { font-size: 0.95rem; }
+.notice-error { background: #FEF2F2; border: 1px solid #B91C1C; }
+.notice-error h2, .notice-error p { color: #B91C1C; }
+
+@media (max-width: 1024px) {
+    .kolab-layout { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+}
+
+@media (max-width: 768px) {
+    .page-head { padding: 36px 16px 4px; }
+    .page-head h1 { font-size: 1.6rem; }
+    .wrap-narrow { max-width: none; }
+    .notice { padding: 16px 18px; }
+    .actions { flex-direction: column; align-items: stretch; }
+    .btn-primary { width: 100%; min-height: 48px; }
+    .actions-note { text-align: center; }
+}
+
+@media (max-width: 560px) {
+    /* 16px stops iOS Safari zooming the viewport when a field is focused. */
+    .field input, .field textarea { font-size: 16px; }
+}
+
+/* Auth screens (/login, /forgot-password, /reset-password) */
+
+.auth-page { padding: 48px 20px 64px; display: flex; justify-content: center; }
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: #fff;
+    border: 1px solid #8B95A3;
+    border-radius: 8px;
+    padding: 32px 28px;
+}
+.auth-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 600; }
+.auth-brand img { width: 40px; height: 40px; }
+.auth-card h1 { margin: 22px 0 8px; font-size: 1.6rem; letter-spacing: -0.02em; }
+.auth-lede { margin: 0 0 24px; color: var(--ink-soft); font-size: 0.95rem; }
+.auth-foot { margin: 24px 0 0; padding-top: 18px; border-top: 1px solid var(--line); font-size: 0.9rem; }
+
+.password-wrap { position: relative; }
+.password-wrap input { padding-right: 68px; }
+.password-toggle {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: none;
+    border: 1px solid #8B95A3;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.password-toggle:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+.field-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.check { display: inline-flex; align-items: center; gap: 8px; font-weight: 400; cursor: pointer; }
+.check input { width: 18px; height: 18px; }
+
+.btn-quiet {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: #fff;
+    border: 1px solid #8B95A3;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-quiet:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+.notice-warn { background: #FFFBEB; border: 1px solid #92400E; }
+.notice-warn h2, .notice-warn p { color: #92400E; }
+.notice-warn code { font-size: 0.85em; background: rgba(146, 64, 14, 0.1); padding: 1px 5px; border-radius: 3px; }
+
+/* Collaboration inbox (/pengajuan) */
+
+.inbox-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 20px;
+    background: #0f172a;
+}
+.inbox-brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 600; text-decoration: none; }
+.inbox-brand img { width: 40px; height: 40px; }
+.inbox-bar-right { display: flex; align-items: center; gap: 14px; }
+.inbox-who { color: #CBD5E1; font-size: 0.9rem; }
+.inbox-bar .btn-quiet { color: #CBD5E1; background: transparent; border-color: #64748B; }
+.inbox-bar .btn-quiet:hover { color: #fff; border-color: #CBD5E1; }
+
+.wrap-wide { max-width: 900px; margin: 0 auto; }
+.inbox-head { margin-bottom: 32px; }
+.inbox-head h1 { margin: 0 0 8px; font-size: 1.7rem; letter-spacing: -0.02em; }
+.inbox-head p { margin: 0; color: var(--ink-soft); }
+
+.inbox-empty { padding: 28px; background: #F8FAFC; border-radius: 8px; }
+.inbox-empty h2 { margin: 0 0 8px; font-size: 1.1rem; }
+.inbox-empty p { margin: 0; color: var(--ink-soft); }
+
+.inbox-list { list-style: none; margin: 0; padding: 0; }
+.inbox-item { padding: 22px 0; border-top: 1px solid var(--line); }
+.inbox-item:first-child { border-top: 0; padding-top: 0; }
+.inbox-item-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.inbox-item-head h2 { margin: 0; font-size: 1.15rem; }
+.inbox-item-head time { color: #64748B; font-size: 0.85rem; }
+
+.inbox-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 14px 0 0; }
+.inbox-meta dt { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #64748B; }
+.inbox-meta dd { margin: 3px 0 0; font-size: 0.95rem; overflow-wrap: anywhere; }
+.inbox-empty-value { color: #64748B; }
+
+.inbox-message { margin-top: 16px; padding: 14px 16px; background: #F8FAFC; border-radius: 6px; }
+.inbox-message p { margin: 0; font-size: 0.95rem; white-space: pre-line; }
+
+.inbox-item-foot { margin-top: 14px; }
+
+@media (max-width: 768px) {
+    .auth-page { padding: 28px 16px 48px; }
+    .auth-card { padding: 24px 20px; }
+    .inbox-bar { flex-wrap: wrap; }
+    .inbox-bar-right { width: 100%; justify-content: space-between; }
+    .inbox-meta { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

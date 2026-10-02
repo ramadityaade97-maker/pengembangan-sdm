@@ -19,6 +19,10 @@
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>
+        <!-- The test HTTP client builds request URLs from APP_URL. The local
+             install lives in a subdirectory, so tests need the bare root here
+             or every request resolves to /laravelstudy/public/<path> and 404s. -->
+        <env name="APP_URL" value="http://localhost"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="BROADCAST_CONNECTION" value="null"/>

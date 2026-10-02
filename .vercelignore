@@ -1,0 +1,21 @@
+node_modules
+vendor
+.git
+.idea
+.vscode
+
+# The local .env must never be uploaded. It holds a real APP_KEY and a
+# database name; production secrets belong in the Vercel dashboard, not in a
+# file that gets uploaded with the build. This is the same class of problem as
+# the stray .env.local that took the site down before.
+.env
+.env.*
+!.env.example
+
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+public/build
+public/hot
+tests
