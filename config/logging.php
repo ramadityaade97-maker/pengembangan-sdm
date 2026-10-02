@@ -52,9 +52,17 @@ return [
 
     'channels' => [
 
+        /* stderr is appended rather than replacing LOG_STACK, because a log file
+           written inside a container is discarded with the container. Without
+           this, a 500 in production reports nothing but "GET / 500": the
+           exception is written to storage/logs/laravel.log where nobody can
+           read it. File channels stay configured for local development. */
         'stack' => [
             'driver' => 'stack',
-            'channels' => explode(',', (string) env('LOG_STACK', 'single')),
+            'channels' => array_unique(array_filter(array_merge(
+                explode(',', (string) env('LOG_STACK', 'single')),
+                ['stderr'],
+            ))),
             'ignore_exceptions' => false,
         ],
 
