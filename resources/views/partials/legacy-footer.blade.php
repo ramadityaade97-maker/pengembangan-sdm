@@ -13,7 +13,7 @@
 
 <footer class="footer">
     <div class="footer-grid">
-        <div>
+        <div class="footer-about">
             <div class="footer-brand">
                 <img src="{{ asset('images/logoDI.png') }}" alt="Logo Denpasar Institute" width="56" height="56" loading="lazy">
                 <div>

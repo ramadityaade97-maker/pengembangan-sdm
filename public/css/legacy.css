@@ -265,8 +265,28 @@ a { color: inherit; }
 @media (max-width: 1024px) {
     .wrap { grid-template-columns: minmax(0, 1fr); gap: 32px; }
     .foto { max-width: 420px; }
-    .footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; }
     .hero { min-height: auto; }
+}
+
+/* Between 561px and 1024px the footer was two columns, so Navigasi, Program
+   and Kontak wrapped onto a second row and the links were cut off on a
+   tablet. The three link columns stay side by side and the brand block takes
+   a row of its own. */
+@media (min-width: 561px) and (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1.4fr);
+        gap: 28px 24px;
+    }
+
+    .footer-about { grid-column: 1 / -1; }
+    .footer-about p { max-width: 62ch; }
+}
+
+@media (max-width: 768px) {
+
+    /* The three column headings hold a single text node, so flex changes how
+       the label is placed, not how it reads. */
+    .footer h2 { display: flex; align-items: center; }
 }
 
 /* ---------- mobile nav ---------- */

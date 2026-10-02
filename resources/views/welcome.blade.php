@@ -1541,8 +1541,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         </div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
-            <div class="lg:col-span-5">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-6">
+            <div class="md:col-span-12 lg:col-span-5">
                 <div class="flex items-center gap-3">
                     <div class="w-[52px] h-[52px] rounded-lg bg-white flex items-center justify-center shrink-0">
                         <img class="!w-9 !h-9 object-contain" src="{{ asset('images/logoDI.png') }}" alt="Logo Denpasar Institute">
@@ -1559,8 +1559,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="px-3 py-1.5 border border-white/15 text-[11px] font-medium text-slate-300">Tonja, Denpasar</span>
                 </div>
             </div>
-            <div class="lg:col-span-2 lg:pl-4">
-                <h2 class="m-0 mb-4 text-white font-semibold text-sm">Navigasi</h2>
+            <div class="md:col-span-3 lg:col-span-2 lg:pl-4">
+                <h2 class="m-0 mb-4 max-md:flex max-md:items-center text-white font-semibold text-sm">Navigasi</h2>
                 <nav class="flex flex-col gap-2.5">
                     <a href="/" class="footer-link text-slate-300 text-sm no-underline">Beranda</a>
                     <a href="#tentang-kami" class="footer-link text-slate-300 text-sm no-underline">Tentang</a>
@@ -1568,8 +1568,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <a href="#program" class="footer-link text-slate-300 text-sm no-underline">Program Kami</a>
                 </nav>
             </div>
-            <div class="lg:col-span-2">
-                <h2 class="m-0 mb-4 text-white font-semibold text-sm">Program</h2>
+            <div class="md:col-span-4 lg:col-span-2">
+                <h2 class="m-0 mb-4 max-md:flex max-md:items-center text-white font-semibold text-sm">Program</h2>
                 <div class="flex flex-col gap-2">
                     <a href="/sop" class="footer-link text-slate-300 text-sm no-underline">SOP</a>
                     <a href="/interview" class="footer-link text-slate-300 text-sm no-underline">Interview Coaching</a>
@@ -1581,8 +1581,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <a href="/tailor" class="footer-link text-slate-300 text-sm no-underline">Tailor-Made</a>
                 </div>
             </div>
-            <div class="lg:col-span-3">
-                <h2 class="m-0 mb-4 text-white font-semibold text-sm">Kontak</h2>
+            <div class="md:col-span-5 lg:col-span-3">
+                <h2 class="m-0 mb-4 max-md:flex max-md:items-center text-white font-semibold text-sm">Kontak</h2>
                 <div class="flex flex-col gap-3">
                     <div class="footer-contact-row flex items-start gap-3 p-3 border border-white/10">
                         <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center shrink-0"><img class="!w-4 !h-4 !m-0" src="{{ asset('images/location.svg') }}" alt="" aria-hidden="true" style="filter: invert(28%) sepia(98%) saturate(2200%) hue-rotate(210deg);"></div>
