@@ -19,6 +19,13 @@ if ! grep -qE "^[[:space:]]*Listen[[:space:]]+[0-9]+" /etc/apache2/ports.conf; t
     exit 1
 fi
 
+# PHP fatal errors go to Apache's error log, which is a file inside the
+# container and is never shown by the platform. A fatal before Laravel boots
+# therefore shows up only as a bare "GET / 500" with an empty body, which is
+# what happened here. Sending PHP's own errors to stderr makes them visible.
+printf 'error_log = /dev/stderr\nlog_errors = 1\ndisplay_errors = Off\n' \
+    > /usr/local/etc/php/conf.d/zz-container-logging.ini
+
 # Clear and cache Laravel config for production
 php artisan config:cache
 php artisan route:cache
