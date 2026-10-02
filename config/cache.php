@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => filled(env('CACHE_STORE')) ? env('CACHE_STORE') : 'database',
+    'default' => filled(env('CACHE_STORE')) ? env('CACHE_STORE') : 'file',
 
     /*
     |--------------------------------------------------------------------------
