@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('QUEUE_CONNECTION', 'database'),
+    'default' => filled(env('QUEUE_CONNECTION')) ? env('QUEUE_CONNECTION') : 'database',
 
     /*
     |--------------------------------------------------------------------------

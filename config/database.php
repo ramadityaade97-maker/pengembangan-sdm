@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => filled(env('DB_CONNECTION')) ? env('DB_CONNECTION') : 'sqlite',
 
     /*
     |--------------------------------------------------------------------------

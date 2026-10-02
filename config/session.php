@@ -2,6 +2,20 @@
 
 use Illuminate\Support\Str;
 
+/*
+ * A variable that exists but is empty is not the same as one that is absent.
+ * env('SESSION_DRIVER', 'database') hands back '' in that case, because the
+ * default only applies to a missing variable. Laravel then calls
+ * createDriver(''), which resolves to createDriver() and calls itself with no
+ * arguments: ArgumentCountError, a fatal on every single request.
+ *
+ * Several variables were defined but empty on the production host, which took
+ * the site down with an empty 500 that nothing in the logs explained. This
+ * helper treats empty as unset so a blank variable degrades to the default
+ * instead of killing the site.
+ */
+$driver = static fn (string $key, string $default): string => filled(env($key)) ? env($key) : $default;
+
 return [
 
     /*
@@ -18,7 +32,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'database'),
+    'driver' => $driver('SESSION_DRIVER', 'database'),
 
     /*
     |--------------------------------------------------------------------------
